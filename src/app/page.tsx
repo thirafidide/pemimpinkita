@@ -19,8 +19,6 @@ export default function Home() {
 						<CandidatePhoto
 							src="/foto-kandidat/Prabowo_Subianto.jpg"
 							alt="Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang"
-							width={786}
-							height={1086}
 						/>
 						<CandidateSectionHeader standing="33,01%">
 							<PresidentialCandidateName>
@@ -100,8 +98,6 @@ export default function Home() {
 						<CandidatePhoto
 							src="/foto-kandidat/Anies_Baswedan.jpg"
 							alt="Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022"
-							width={1920}
-							height={2398}
 						/>
 						<CandidateSectionHeader standing="26,95%">
 							<PresidentialCandidateName>
@@ -161,8 +157,6 @@ export default function Home() {
 						<CandidatePhoto
 							src="/foto-kandidat/Ganjar_Pranowo.jpg"
 							alt="Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023"
-							width={799}
-							height={1021}
 						/>
 						<CandidateSectionHeader standing="28.06%">
 							<PresidentialCandidateName>
@@ -301,7 +295,13 @@ function PresidentialCandidateName(props: any) {
 function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
 	return (
 		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image className="w-28 h-36 object-cover rounded-md" priority {...props} />
+		<Image
+			className="w-28 h-36 object-cover rounded-md"
+			priority
+			width={112}
+			height={144}
+			{...props}
+		/>
 	);
 }
 
