@@ -324,8 +324,8 @@ function PoliticalParty(props: any) {
 									}`}
 									{...props.imageProps}
 									width={
-										props.width && props.height
-											? (24 * props.width) / props.height
+										props.imageProps.width && props.imageProps.height
+											? (24 * props.imageProps.width) / props.imageProps.height
 											: 100
 									}
 									height={24}
