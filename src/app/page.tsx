@@ -22,23 +22,48 @@ export default function Home() {
 							width={786}
 							height={1086}
 						/>
-						<CandidateSectionHeader standing="36%">
+						<CandidateSectionHeader standing="33,01%">
 							<PresidentialCandidateName>
 								Prabowo Subianto
 							</PresidentialCandidateName>
 						</CandidateSectionHeader>
-						Gerindra (12,57% | 78), Golkar (12,31% | 85), PAN (6,84% | 44), PBB
-						(0,79% | 0), Gelora, PSI (1,89% | 0), Garuda (0,50% | 0)
-						<br />
-						36% | 207 Kursi
+						207 / 575 Kursi DPR RI (2019 - 2024)
 						<div className="flex flex-wrap gap-2">
-							<PoliticalParty name="Gerindra" />
-							<PoliticalParty name="Golkar" />
-							<PoliticalParty name="PAN" />
-							<PoliticalParty name="PBB" />
-							<PoliticalParty name="Gelora" />
-							<PoliticalParty name="PSI" />
-							<PoliticalParty name="Garuda" />
+							<PoliticalParty
+								name="Gerindra"
+								fullName="Partai Gerakan Indonesia Raya"
+								previousPollPercentResult={12.57}
+								previousDPRSeats={78}
+							/>
+							<PoliticalParty
+								name="Golkar"
+								fullName="Partai Golongan Karya"
+								previousPollPercentResult={12.31}
+								previousDPRSeats={85}
+							/>
+							<PoliticalParty
+								name="PAN"
+								fullName="Partai Amanat Nasional"
+								previousPollPercentResult={6.84}
+								previousDPRSeats={44}
+							/>
+							<PoliticalParty
+								name="PBB"
+								fullName="Partai Bulan Bintang"
+								previousPollPercentResult={0.79}
+								previousDPRSeats={0}
+							/>
+							<PoliticalParty
+								name="Garuda"
+								fullName="Partai Garda Perubahan Indonesia"
+								previousPollPercentResult={0.5}
+								previousDPRSeats={0}
+							/>
+							<PoliticalParty
+								name="Gelora"
+								fullName="Partai Gelombang Rakyat Indonesia"
+								newParty
+							/>
 						</div>
 					</CandidateMainSection>
 					<CandidateMainSection>
@@ -48,20 +73,34 @@ export default function Home() {
 							width={1920}
 							height={2398}
 						/>
-						<CandidateSectionHeader standing="36%">
+						<CandidateSectionHeader standing="26,95%">
 							<PresidentialCandidateName>
 								Anies Baswedan
 							</PresidentialCandidateName>
 						</CandidateSectionHeader>
-						Muhaimin Iskandar Nasdem(9,05% | 59), PKB (9,69% | 58), PKS (8,21% |
-						50), Ummat
+						Muhaimin Iskandar
 						<br />
-						26.95% | 167 Kursi
+						167 / 575 Kursi DPR RI (2019 - 2024)
 						<div className="flex flex-wrap gap-2">
-							<PoliticalParty name="Nasdem" />
-							<PoliticalParty name="PKB" />
-							<PoliticalParty name="PKS" />
-							<PoliticalParty name="Ummat" />
+							<PoliticalParty
+								name="Nasdem"
+								fullName="Partai Nasional Demokrat"
+								previousPollPercentResult={9.05}
+								previousDPRSeats={59}
+							/>
+							<PoliticalParty
+								name="PKB"
+								fullName="Partai Kebangkitan Bangsa"
+								previousPollPercentResult={9.69}
+								previousDPRSeats={58}
+							/>
+							<PoliticalParty
+								name="PKS"
+								fullName="Partai Kebangkitan Bangsa"
+								previousPollPercentResult={8.21}
+								previousDPRSeats={50}
+							/>
+							<PoliticalParty name="Ummat" fullName="Partai Ummat" newParty />
 						</div>
 					</CandidateMainSection>
 					<CandidateMainSection>
@@ -71,31 +110,62 @@ export default function Home() {
 							width={799}
 							height={1021}
 						/>
-						<CandidateSectionHeader standing="36%">
+						<CandidateSectionHeader standing="28.06%">
 							<PresidentialCandidateName>
 								Ganjar Pranowo
 							</PresidentialCandidateName>
 						</CandidateSectionHeader>
-						PDIP (19,33% | 128) PPP (4,52% | 19) Hanura (1,54% | 0) Perindo
-						(2,67% | 0)
-						<br />
-						25.57% | 147 Kursi
+						147 / 575 Kursi DPR RI (2019 - 2024)
 						<div className="flex gap-2 flex-wrap">
-							<PoliticalParty name="PDIP" />
-							<PoliticalParty name="PPP" />
-							<PoliticalParty name="Hanura" />
-							<PoliticalParty name="Perindo" />
+							<PoliticalParty
+								name="PDI-P"
+								fullName="Partai Demokrasi Indonesia Perjuangan"
+								previousPollPercentResult={19.33}
+								previousDPRSeats={128}
+							/>
+							<PoliticalParty
+								name="PPP"
+								fullName="Partai Persatuan Pembangunan"
+								previousPollPercentResult={4.52}
+								previousDPRSeats={19}
+							/>
+							<PoliticalParty
+								name="Hanura"
+								fullName="Partai Hati Nurani Rakyat"
+								previousPollPercentResult={1.54}
+								previousDPRSeats={0}
+							/>
+							<PoliticalParty
+								name="Perindo"
+								fullName="Partai Persatuan Indonesia"
+								previousPollPercentResult={2.67}
+								previousDPRSeats={0}
+							/>
 						</div>
 					</CandidateMainSection>
 				</div>
 
 				<div className="flex flex-col gap-4">
-					Partai Nasional yang belum mendeklarasikan dukungan Buruh PKN Demokrat
-					(7,77% | 54)
+					Partai Nasional yang belum mendeklarasikan dukungan
 					<div className="flex gap-2 flex-wrap">
-						<PoliticalParty name="Demokrat" />
-						<PoliticalParty name="PKN" />
-						<PoliticalParty name="Buruh" />
+						<PoliticalParty
+							name="Demokrat"
+							fullName="Partai Demokrat"
+							previousPollPercentResult={7.77}
+							previousDPRSeats={54}
+						/>
+						<PoliticalParty
+							name="PSI"
+							fullName="Partai Solidaritas Indonesia"
+							previousPollPercentResult={1.89}
+							previousDPRSeats={0}
+						/>
+						<PoliticalParty
+							name="PKN"
+							fullName="Partai Kebangkitan Nusantara"
+							newParty
+						/>
+						<PoliticalParty name="Buruh" fullName="Partai Buruh" newParty />
 					</div>
 				</div>
 			</main>
@@ -133,11 +203,15 @@ function PresidentialCandidateName(props: any) {
 function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
 	return (
 		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image className="w-28 h-36 object-cover" priority {...props} />
+		<Image className="w-28 h-36 object-cover rounded-md" priority {...props} />
 	);
 }
 
 function PoliticalParty(props: any) {
+	const showShortName =
+		props.name.toLowerCase() !==
+		props.fullName.toLowerCase().replace(' ', '').replace('partai', '');
+
 	return (
 		<div className="inline-flex flex-col content-center">
 			<TooltipProvider>
@@ -152,8 +226,24 @@ function PoliticalParty(props: any) {
 							{props.name}
 						</Button>
 					</TooltipTrigger>
-					<TooltipContent side="bottom">
-						<p>Add to library</p>
+					<TooltipContent side="bottom" className="flex flex-col gap-2">
+						<p className="font-bold text-lg">
+							{props.fullName} {showShortName && <span>({props.name})</span>}
+						</p>
+
+						{props.newParty ? (
+							<p>Partai baru</p>
+						) : (
+							<>
+								<p>
+									Perolehan suara di Pemilu 2019:{' '}
+									{props.previousPollPercentResult}%
+								</p>
+								<p>
+									Kursi DPR RI (2019-2024): {props.previousDPRSeats} / 575 Kursi
+								</p>
+							</>
+						)}
 					</TooltipContent>
 				</Tooltip>
 			</TooltipProvider>
