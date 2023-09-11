@@ -34,35 +34,65 @@ export default function Home() {
 								fullName="Partai Gerakan Indonesia Raya"
 								previousPollPercentResult={12.57}
 								previousDPRSeats={78}
+								imageProps={{
+									src: '/partai-politik/gerindra.png',
+									width: 360,
+									height: 432,
+								}}
 							/>
 							<PoliticalParty
 								name="Golkar"
 								fullName="Partai Golongan Karya"
 								previousPollPercentResult={12.31}
 								previousDPRSeats={85}
+								imageProps={{
+									src: '/partai-politik/golkar.png',
+									width: 360,
+									height: 345,
+								}}
 							/>
 							<PoliticalParty
 								name="PAN"
 								fullName="Partai Amanat Nasional"
 								previousPollPercentResult={6.84}
 								previousDPRSeats={44}
+								imageProps={{
+									src: '/partai-politik/pan.png',
+									width: 300,
+									height: 422,
+								}}
 							/>
 							<PoliticalParty
 								name="PBB"
 								fullName="Partai Bulan Bintang"
 								previousPollPercentResult={0.79}
 								previousDPRSeats={0}
+								imageProps={{
+									src: '/partai-politik/pbb.png',
+									width: 400,
+									height: 574,
+								}}
 							/>
 							<PoliticalParty
 								name="Garuda"
 								fullName="Partai Garda Perubahan Indonesia"
 								previousPollPercentResult={0.5}
 								previousDPRSeats={0}
+								imageProps={{
+									src: '/partai-politik/garuda.png',
+									width: 360,
+									height: 360,
+								}}
 							/>
 							<PoliticalParty
 								name="Gelora"
 								fullName="Partai Gelombang Rakyat Indonesia"
 								newParty
+								imageProps={{
+									src: '/partai-politik/gelora.png',
+									width: 360,
+									height: 506,
+								}}
 							/>
 						</div>
 					</CandidateMainSection>
@@ -83,24 +113,48 @@ export default function Home() {
 						167 / 575 Kursi DPR RI (2019 - 2024)
 						<div className="flex flex-wrap gap-2">
 							<PoliticalParty
-								name="Nasdem"
+								name="NasDem"
 								fullName="Partai Nasional Demokrat"
 								previousPollPercentResult={9.05}
 								previousDPRSeats={59}
+								imageProps={{
+									src: '/partai-politik/nasdem.png',
+									width: 400,
+									height: 400,
+								}}
 							/>
 							<PoliticalParty
 								name="PKB"
 								fullName="Partai Kebangkitan Bangsa"
 								previousPollPercentResult={9.69}
 								previousDPRSeats={58}
+								imageProps={{
+									src: '/partai-politik/pkb.png',
+									width: 320,
+									height: 414,
+								}}
 							/>
 							<PoliticalParty
 								name="PKS"
-								fullName="Partai Kebangkitan Bangsa"
+								fullName="Partai Keadilan Sejahtera"
 								previousPollPercentResult={8.21}
 								previousDPRSeats={50}
+								imageProps={{
+									src: '/partai-politik/pks.png',
+									width: 300,
+									height: 421,
+								}}
 							/>
-							<PoliticalParty name="Ummat" fullName="Partai Ummat" newParty />
+							<PoliticalParty
+								name="Ummat"
+								fullName="Partai Ummat"
+								newParty
+								imageProps={{
+									src: '/partai-politik/ummat.png',
+									width: 291,
+									height: 344,
+								}}
+							/>
 						</div>
 					</CandidateMainSection>
 					<CandidateMainSection>
@@ -122,24 +176,44 @@ export default function Home() {
 								fullName="Partai Demokrasi Indonesia Perjuangan"
 								previousPollPercentResult={19.33}
 								previousDPRSeats={128}
+								imageProps={{
+									src: '/partai-politik/pdip.png',
+									width: 360,
+									height: 407,
+								}}
 							/>
 							<PoliticalParty
 								name="PPP"
 								fullName="Partai Persatuan Pembangunan"
 								previousPollPercentResult={4.52}
 								previousDPRSeats={19}
+								imageProps={{
+									src: '/partai-politik/ppp.png',
+									width: 400,
+									height: 400,
+								}}
 							/>
 							<PoliticalParty
 								name="Hanura"
 								fullName="Partai Hati Nurani Rakyat"
 								previousPollPercentResult={1.54}
 								previousDPRSeats={0}
+								imageProps={{
+									src: '/partai-politik/hanura.png',
+									width: 400,
+									height: 231,
+								}}
 							/>
 							<PoliticalParty
 								name="Perindo"
 								fullName="Partai Persatuan Indonesia"
 								previousPollPercentResult={2.67}
 								previousDPRSeats={0}
+								imageProps={{
+									src: '/partai-politik/perindo.png',
+									width: 349,
+									height: 256,
+								}}
 							/>
 						</div>
 					</CandidateMainSection>
@@ -153,19 +227,43 @@ export default function Home() {
 							fullName="Partai Demokrat"
 							previousPollPercentResult={7.77}
 							previousDPRSeats={54}
+							imageProps={{
+								src: '/partai-politik/demokrat.png',
+								width: 500,
+								height: 333,
+							}}
 						/>
 						<PoliticalParty
 							name="PSI"
 							fullName="Partai Solidaritas Indonesia"
 							previousPollPercentResult={1.89}
 							previousDPRSeats={0}
+							imageProps={{
+								src: '/partai-politik/psi.png',
+								width: 360,
+								height: 456,
+							}}
 						/>
 						<PoliticalParty
 							name="PKN"
 							fullName="Partai Kebangkitan Nusantara"
 							newParty
+							imageProps={{
+								src: '/partai-politik/pkn.png',
+								width: 360,
+								height: 360,
+							}}
 						/>
-						<PoliticalParty name="Buruh" fullName="Partai Buruh" newParty />
+						<PoliticalParty
+							name="Buruh"
+							fullName="Partai Buruh"
+							newParty
+							imageProps={{
+								src: '/partai-politik/buruh.png',
+								width: 360,
+								height: 144,
+							}}
+						/>
 					</div>
 				</div>
 			</main>
@@ -218,11 +316,21 @@ function PoliticalParty(props: any) {
 				<Tooltip delayDuration={0}>
 					<TooltipTrigger asChild>
 						<Button variant="outline">
-							{/* <img
-				src="https://upload.wikimedia.org/wikipedia/id/thumb/c/cd/Logo_PDI-P.svg/360px-Logo_PDI-P.svg.png"
-				alt="pdip"
-				className="h-10 w-auto object-scale-down"
-			/> */}
+							{props.imageProps?.src && (
+								<Image
+									className="h-6 w-auto pr-2 object-scale-down"
+									alt={`Logo ${props.fullName} ${
+										showShortName ? `(${props.name})` : ''
+									}`}
+									{...props.imageProps}
+									width={
+										props.width && props.height
+											? (24 * props.width) / props.height
+											: 100
+									}
+									height={24}
+								/>
+							)}
 							{props.name}
 						</Button>
 					</TooltipTrigger>
