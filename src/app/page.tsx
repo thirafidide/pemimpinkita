@@ -9,8 +9,11 @@ import Image from 'next/image';
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-[#FCFCFC] p-5">
-			<main className="flex flex-col gap-5 container mx-auto">
+		<div className="min-h-screen bg-[#FCFCFC] p-5 pt-20">
+			<main className="flex flex-col gap-12 container mx-auto">
+				<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+					Pemilu Presiden 2024
+				</h1>
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					<CandidateMainSection>
 						<CandidatePhoto
@@ -19,9 +22,11 @@ export default function Home() {
 							width={786}
 							height={1086}
 						/>
-						<PresidentialCandidateName>
-							Prabowo Subianto
-						</PresidentialCandidateName>
+						<CandidateSectionHeader standing="36%">
+							<PresidentialCandidateName>
+								Prabowo Subianto
+							</PresidentialCandidateName>
+						</CandidateSectionHeader>
 						Gerindra (12,57% | 78), Golkar (12,31% | 85), PAN (6,84% | 44), PBB
 						(0,79% | 0), Gelora, PSI (1,89% | 0), Garuda (0,50% | 0)
 						<br />
@@ -43,9 +48,11 @@ export default function Home() {
 							width={1920}
 							height={2398}
 						/>
-						<PresidentialCandidateName>
-							Anies Baswedan
-						</PresidentialCandidateName>
+						<CandidateSectionHeader standing="36%">
+							<PresidentialCandidateName>
+								Anies Baswedan
+							</PresidentialCandidateName>
+						</CandidateSectionHeader>
 						Muhaimin Iskandar Nasdem(9,05% | 59), PKB (9,69% | 58), PKS (8,21% |
 						50), Ummat
 						<br />
@@ -64,14 +71,16 @@ export default function Home() {
 							width={799}
 							height={1021}
 						/>
-						<PresidentialCandidateName>
-							Ganjar Pranowo
-						</PresidentialCandidateName>
+						<CandidateSectionHeader standing="36%">
+							<PresidentialCandidateName>
+								Ganjar Pranowo
+							</PresidentialCandidateName>
+						</CandidateSectionHeader>
 						PDIP (19,33% | 128) PPP (4,52% | 19) Hanura (1,54% | 0) Perindo
 						(2,67% | 0)
 						<br />
 						25.57% | 147 Kursi
-						<div className="flex gap-2">
+						<div className="flex gap-2 flex-wrap">
 							<PoliticalParty name="PDIP" />
 							<PoliticalParty name="PPP" />
 							<PoliticalParty name="Hanura" />
@@ -79,12 +88,15 @@ export default function Home() {
 						</div>
 					</CandidateMainSection>
 				</div>
-				Partai Nasional yang belum mendeklarasikan dukungan Buruh PKN Demokrat
-				(7,77% | 54)
-				<div className="flex gap-2">
-					<PoliticalParty name="Demokrat" />
-					<PoliticalParty name="PKN" />
-					<PoliticalParty name="Buruh" />
+
+				<div className="flex flex-col gap-4">
+					Partai Nasional yang belum mendeklarasikan dukungan Buruh PKN Demokrat
+					(7,77% | 54)
+					<div className="flex gap-2 flex-wrap">
+						<PoliticalParty name="Demokrat" />
+						<PoliticalParty name="PKN" />
+						<PoliticalParty name="Buruh" />
+					</div>
 				</div>
 			</main>
 		</div>
@@ -93,14 +105,29 @@ export default function Home() {
 
 function CandidateMainSection(props: any) {
 	return (
-		<div className="flex-1 bg-white border-[#CECECE] border rounded p-4">
+		<div className="flex flex-col gap-4 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			{props.children}
 		</div>
 	);
 }
 
+function CandidateSectionHeader(props: any) {
+	return (
+		<div className="flex justify-between items-baseline">
+			<div className="flex">{props.children}</div>
+			<div className="text-3xl font-extralight border-l-2 pl-4">
+				{props.standing}
+			</div>
+		</div>
+	);
+}
+
 function PresidentialCandidateName(props: any) {
-	return <h2 className="text-xl">{props.children}</h2>;
+	return (
+		<h2 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
+			{props.children}
+		</h2>
+	);
 }
 
 function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
