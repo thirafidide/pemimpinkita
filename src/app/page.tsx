@@ -1,3 +1,10 @@
+import { Button } from '@/components/ui/Button';
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from '@/components/ui/Tooltip';
 import Image from 'next/image';
 
 export default function Home() {
@@ -106,12 +113,23 @@ function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
 function PoliticalParty(props: any) {
 	return (
 		<div className="inline-flex flex-col content-center">
-			{/* <img
+			<TooltipProvider>
+				<Tooltip delayDuration={0}>
+					<TooltipTrigger asChild>
+						<Button variant="outline">
+							{/* <img
 				src="https://upload.wikimedia.org/wikipedia/id/thumb/c/cd/Logo_PDI-P.svg/360px-Logo_PDI-P.svg.png"
 				alt="pdip"
 				className="h-10 w-auto object-scale-down"
 			/> */}
-			<p className="font-bold">{props.name}</p>
+							{props.name}
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent side="bottom">
+						<p>Add to library</p>
+					</TooltipContent>
+				</Tooltip>
+			</TooltipProvider>
 		</div>
 	);
 }
