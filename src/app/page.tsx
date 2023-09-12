@@ -213,7 +213,7 @@ export default function Home() {
 					</CandidateMainSection>
 				</div>
 
-				<div className="flex flex-col gap-4">
+				<div className="flex flex-col gap-4 p-4">
 					Partai Nasional yang belum mendeklarasikan dukungan
 					<div className="flex gap-2 flex-wrap">
 						<PoliticalParty
@@ -275,11 +275,13 @@ function CandidateMainSection(props: any) {
 
 function CandidateSectionHeader(props: any) {
 	return (
-		<div className="flex justify-between items-baseline">
-			<div className="flex">{props.children}</div>
-			<div className="text-3xl font-extralight border-l-2 pl-4">
-				{props.standing}
-			</div>
+		<div className="flex justify-between items-end">
+			<div className="flex-1">{props.children}</div>
+
+			<p className="flex flex-1 text-end text-xs flex-col gap-1">
+				<span className="text-3xl font-extralight pl-4">{props.standing}</span>
+				<span>Perolehan suara partai pendukung pada pemilu 2019</span>
+			</p>
 		</div>
 	);
 }
