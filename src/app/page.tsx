@@ -1,10 +1,9 @@
 import { Button } from '@/components/ui/Button';
 import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/components/ui/Tooltip';
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/Popover';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -249,15 +248,17 @@ export default function Home() {
 				</div>
 
 				<div className="flex flex-col gap-4">
-					<p className="flex flex-1 text-xs flex-col gap-1">
-						<span className="text-3xl font-extralight">9,66%</span>
-						<span className="flex items-center gap-1">
-							Perolehan suara partai pendukung pada pemilu 2019
-						</span>
-					</p>
 					<p className="scroll-m-20 font-semibold tracking-tight">
 						Partai Nasional yang belum mendeklarasikan dukungan
 					</p>
+
+					<p className="flex flex-1 text-xs flex-col gap-1">
+						<span className="text-3xl font-extralight">9,66%</span>
+						<span className="flex items-center gap-1">
+							Total perolehan suara partai pada pemilu 2019
+						</span>
+					</p>
+
 					<div className="flex gap-2 flex-wrap">
 						<PoliticalParty
 							name="Demokrat"
@@ -310,7 +311,7 @@ export default function Home() {
 
 function CandidateMainSection(props: any) {
 	return (
-		<div className="flex flex-col gap-4 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
+		<div className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			{props.children}
 		</div>
 	);
@@ -380,69 +381,61 @@ function PoliticalParty(props: any) {
 		props.fullName.toLowerCase().replace(' ', '').replace('partai', '');
 
 	return (
-		<div className="inline-flex flex-col content-center">
-			<TooltipProvider>
-				<Tooltip delayDuration={0}>
-					<TooltipTrigger asChild>
-						<Button variant="outline">
-							{props.imageProps?.src && (
-								<Image
-									className="h-6 w-auto pr-2 object-scale-down"
-									alt={`Logo ${props.fullName} ${
-										showShortName ? `(${props.name})` : ''
-									}`}
-									{...props.imageProps}
-									width={
-										props.imageProps.width && props.imageProps.height
-											? (24 * props.imageProps.width) / props.imageProps.height
-											: 100
-									}
-									height={24}
-								/>
-							)}
-							{props.name}
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent
-						side="bottom"
-						className="flex flex-col gap-2 max-w-sm"
-					>
-						{props.imageProps?.src && (
-							<Image
-								className="h-24 w-auto pr-2 object-scale-down"
-								alt={`Logo ${props.fullName} ${
-									showShortName ? `(${props.name})` : ''
-								}`}
-								{...props.imageProps}
-								width={
-									props.imageProps.width && props.imageProps.height
-										? (96 * props.imageProps.width) / props.imageProps.height
-										: 100
-								}
-								height={96}
-							/>
-						)}
+		<Popover>
+			<PopoverTrigger asChild>
+				<Button variant="outline">
+					{props.imageProps?.src && (
+						<Image
+							className="h-6 w-auto pr-2 object-scale-down"
+							alt={`Logo ${props.fullName} ${
+								showShortName ? `(${props.name})` : ''
+							}`}
+							{...props.imageProps}
+							width={
+								props.imageProps.width && props.imageProps.height
+									? (24 * props.imageProps.width) / props.imageProps.height
+									: 100
+							}
+							height={24}
+						/>
+					)}
+					{props.name}
+				</Button>
+			</PopoverTrigger>
+			<PopoverContent side="bottom" className="flex flex-col gap-2 max-w-sm">
+				{props.imageProps?.src && (
+					<Image
+						className="h-24 w-auto pr-2 object-scale-down"
+						alt={`Logo ${props.fullName} ${
+							showShortName ? `(${props.name})` : ''
+						}`}
+						{...props.imageProps}
+						width={
+							props.imageProps.width && props.imageProps.height
+								? (96 * props.imageProps.width) / props.imageProps.height
+								: 100
+						}
+						height={96}
+					/>
+				)}
 
-						<p className="font-bold text-lg">
-							{props.fullName} {showShortName && <span>({props.name})</span>}
+				<p className="font-bold text-lg">
+					{props.fullName} {showShortName && <span>({props.name})</span>}
+				</p>
+
+				{props.newParty ? (
+					<p>Partai baru</p>
+				) : (
+					<>
+						<p>
+							Perolehan suara di Pemilu 2019: {props.previousPollPercentResult}%
 						</p>
-
-						{props.newParty ? (
-							<p>Partai baru</p>
-						) : (
-							<>
-								<p>
-									Perolehan suara di Pemilu 2019:{' '}
-									{props.previousPollPercentResult}%
-								</p>
-								<p>
-									Kursi DPR RI (2019-2024): {props.previousDPRSeats} / 575 Kursi
-								</p>
-							</>
-						)}
-					</TooltipContent>
-				</Tooltip>
-			</TooltipProvider>
-		</div>
+						<p>
+							Kursi DPR RI (2019-2024): {props.previousDPRSeats} / 575 Kursi
+						</p>
+					</>
+				)}
+			</PopoverContent>
+		</Popover>
 	);
 }
