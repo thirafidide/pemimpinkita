@@ -5,27 +5,44 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/Tooltip';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-[#FCFCFC] p-5 pt-20">
-			<main className="flex flex-col gap-12 container mx-auto">
-				<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-					Pemilu Presiden 2024
-				</h1>
+		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
+			<main className="flex flex-col gap-12 container p-0 mx-auto">
+				<div className="flex flex-col gap-5 max-w-2xl">
+					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-5xl">
+						Pemilu Presiden 2024
+					</h1>
+
+					<p>
+						Kondisi sementara kandidat capres-cawapres dan koalisi partai
+						pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
+						berdasarkan partai pendukung dan perolehan suara pada Pemilu
+						sebelumnya (2019)
+					</p>
+				</div>
+
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					<CandidateMainSection>
 						<CandidatePhoto
 							src="/foto-kandidat/Prabowo_Subianto.jpg"
 							alt="Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang"
 						/>
-						<CandidateSectionHeader standing="33,01%">
-							<PresidentialCandidateName>
-								Prabowo Subianto
-							</PresidentialCandidateName>
-						</CandidateSectionHeader>
-						207 / 575 Kursi DPR RI (2019 - 2024)
+						<CandidateSectionHeader
+							presidentialCandidateName="Prabowo Subianto"
+							standing="33,01%"
+						/>
+
+						<div>
+							<p className="scroll-m-20 font-semibold tracking-tight">
+								Koalisi Indonesia Maju
+							</p>
+							207 / 575 Kursi DPR RI (2019 - 2024)
+						</div>
+
 						<div className="flex flex-wrap gap-2">
 							<PoliticalParty
 								name="Gerindra"
@@ -95,18 +112,30 @@ export default function Home() {
 						</div>
 					</CandidateMainSection>
 					<CandidateMainSection>
-						<CandidatePhoto
-							src="/foto-kandidat/Anies_Baswedan.jpg"
-							alt="Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022"
+						<div className="flex gap-2">
+							<CandidatePhoto
+								src="/foto-kandidat/Anies_Baswedan.jpg"
+								alt="Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022"
+							/>
+							<CandidatePhoto
+								src="/foto-kandidat/Muhaimin_Iskandar.jpg"
+								alt="Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang"
+							/>
+						</div>
+
+						<CandidateSectionHeader
+							presidentialCandidateName="Anies Baswedan"
+							vicePresidentialCandidateName="Muhaimin Iskandar"
+							standing="26,95%"
 						/>
-						<CandidateSectionHeader standing="26,95%">
-							<PresidentialCandidateName>
-								Anies Baswedan
-							</PresidentialCandidateName>
-						</CandidateSectionHeader>
-						Muhaimin Iskandar
-						<br />
-						167 / 575 Kursi DPR RI (2019 - 2024)
+
+						<div>
+							<p className="scroll-m-20 font-semibold tracking-tight">
+								Koalisi Perubahan untuk Persatuan
+							</p>
+							167 / 575 Kursi DPR RI (2019 - 2024)
+						</div>
+
 						<div className="flex flex-wrap gap-2">
 							<PoliticalParty
 								name="NasDem"
@@ -158,13 +187,19 @@ export default function Home() {
 							src="/foto-kandidat/Ganjar_Pranowo.jpg"
 							alt="Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023"
 						/>
-						<CandidateSectionHeader standing="28.06%">
-							<PresidentialCandidateName>
-								Ganjar Pranowo
-							</PresidentialCandidateName>
-						</CandidateSectionHeader>
-						147 / 575 Kursi DPR RI (2019 - 2024)
-						<div className="flex gap-2 flex-wrap">
+						<CandidateSectionHeader
+							presidentialCandidateName="Ganjar Pranowo"
+							standing="28.06%"
+						/>
+
+						<div>
+							<p className="scroll-m-20 font-semibold tracking-tight">
+								Kerja Sama Partai Politik Pengusung Ganjar Pranowo
+							</p>
+							147 / 575 Kursi DPR RI (2019 - 2024)
+						</div>
+
+						<div className="flex gap-2 flex-wrap justify-self-end">
 							<PoliticalParty
 								name="PDI-P"
 								fullName="Partai Demokrasi Indonesia Perjuangan"
@@ -213,8 +248,16 @@ export default function Home() {
 					</CandidateMainSection>
 				</div>
 
-				<div className="flex flex-col gap-4 p-4">
-					Partai Nasional yang belum mendeklarasikan dukungan
+				<div className="flex flex-col gap-4">
+					<p className="flex flex-1 text-xs flex-col gap-1">
+						<span className="text-3xl font-extralight">9,66%</span>
+						<span className="flex items-center gap-1">
+							Perolehan suara partai pendukung pada pemilu 2019
+						</span>
+					</p>
+					<p className="scroll-m-20 font-semibold tracking-tight">
+						Partai Nasional yang belum mendeklarasikan dukungan
+					</p>
 					<div className="flex gap-2 flex-wrap">
 						<PoliticalParty
 							name="Demokrat"
@@ -275,12 +318,22 @@ function CandidateMainSection(props: any) {
 
 function CandidateSectionHeader(props: any) {
 	return (
-		<div className="flex justify-between items-end">
-			<div className="flex-1">{props.children}</div>
+		<div className="flex flex-col gap-4">
+			<div className="flex-1">
+				<PresidentialCandidateName>
+					{props.presidentialCandidateName}
+				</PresidentialCandidateName>
 
-			<p className="flex flex-1 text-end text-xs flex-col gap-1">
-				<span className="text-3xl font-extralight pl-4">{props.standing}</span>
-				<span>Perolehan suara partai pendukung pada pemilu 2019</span>
+				<VicePresidentialCandidateName>
+					{props.vicePresidentialCandidateName}
+				</VicePresidentialCandidateName>
+			</div>
+
+			<p className="flex flex-1 text-xs flex-col gap-1">
+				<span className="text-3xl font-extralight">{props.standing}</span>
+				<span className="flex items-center gap-1">
+					Perolehan suara partai pendukung pada pemilu 2019
+				</span>
 			</p>
 		</div>
 	);
@@ -290,6 +343,20 @@ function PresidentialCandidateName(props: any) {
 	return (
 		<h2 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
 			{props.children}
+		</h2>
+	);
+}
+
+function VicePresidentialCandidateName(props: any) {
+	return (
+		<h2
+			className={cn(
+				'scroll-m-20 text-xl tracking-tight transition-colors first:mt-0',
+				{ 'opacity-40': !props.children },
+				{ 'font-semibold': props.children },
+			)}
+		>
+			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
 		</h2>
 	);
 }
@@ -336,7 +403,26 @@ function PoliticalParty(props: any) {
 							{props.name}
 						</Button>
 					</TooltipTrigger>
-					<TooltipContent side="bottom" className="flex flex-col gap-2">
+					<TooltipContent
+						side="bottom"
+						className="flex flex-col gap-2 max-w-sm"
+					>
+						{props.imageProps?.src && (
+							<Image
+								className="h-24 w-auto pr-2 object-scale-down"
+								alt={`Logo ${props.fullName} ${
+									showShortName ? `(${props.name})` : ''
+								}`}
+								{...props.imageProps}
+								width={
+									props.imageProps.width && props.imageProps.height
+										? (96 * props.imageProps.width) / props.imageProps.height
+										: 100
+								}
+								height={96}
+							/>
+						)}
+
 						<p className="font-bold text-lg">
 							{props.fullName} {showShortName && <span>({props.name})</span>}
 						</p>
