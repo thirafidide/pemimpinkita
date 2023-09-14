@@ -188,7 +188,7 @@ export default function Home() {
 						/>
 						<CandidateSectionHeader
 							presidentialCandidateName="Ganjar Pranowo"
-							standing="28.06%"
+							standing="28,06%"
 						/>
 
 						<div>
