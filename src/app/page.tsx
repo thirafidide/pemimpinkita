@@ -4,7 +4,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/Popover';
-import { cn } from '@/lib/utils';
+import { CandidateCard } from '@/presidential-candidate/CandidateCard';
 import Image from 'next/image';
 
 export default function Home() {
@@ -25,16 +25,16 @@ export default function Home() {
 				</div>
 
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
-					<CandidateMainSection>
-						<CandidatePhoto
-							src="/foto-kandidat/Prabowo_Subianto.jpg"
-							alt="Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang"
-						/>
-						<CandidateSectionHeader
-							presidentialCandidateName="Prabowo Subianto"
-							standing="33,01%"
-						/>
-
+					<CandidateCard
+						presidentialCandidate={{
+							name: 'Prabowo Subianto',
+							photo: {
+								src: '/foto-kandidat/Prabowo_Subianto.jpg',
+								alt: 'Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang',
+							},
+						}}
+						standing={0.3301}
+					>
 						<div>
 							<p className="scroll-m-20 font-semibold tracking-tight">
 								Koalisi Indonesia Maju
@@ -109,25 +109,25 @@ export default function Home() {
 								}}
 							/>
 						</div>
-					</CandidateMainSection>
-					<CandidateMainSection>
-						<div className="flex gap-2">
-							<CandidatePhoto
-								src="/foto-kandidat/Anies_Baswedan.jpg"
-								alt="Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022"
-							/>
-							<CandidatePhoto
-								src="/foto-kandidat/Muhaimin_Iskandar.jpg"
-								alt="Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang"
-							/>
-						</div>
+					</CandidateCard>
 
-						<CandidateSectionHeader
-							presidentialCandidateName="Anies Baswedan"
-							vicePresidentialCandidateName="Muhaimin Iskandar"
-							standing="26,95%"
-						/>
-
+					<CandidateCard
+						presidentialCandidate={{
+							name: 'Anies Baswedan',
+							photo: {
+								src: '/foto-kandidat/Anies_Baswedan.jpg',
+								alt: 'Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022',
+							},
+						}}
+						vicePresidentialCandidate={{
+							name: 'Muhaimin Iskandar',
+							photo: {
+								src: '/foto-kandidat/Muhaimin_Iskandar.jpg',
+								alt: 'Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang',
+							},
+						}}
+						standing={0.2695}
+					>
 						<div>
 							<p className="scroll-m-20 font-semibold tracking-tight">
 								Koalisi Perubahan untuk Persatuan
@@ -180,17 +180,18 @@ export default function Home() {
 								}}
 							/>
 						</div>
-					</CandidateMainSection>
-					<CandidateMainSection>
-						<CandidatePhoto
-							src="/foto-kandidat/Ganjar_Pranowo.jpg"
-							alt="Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023"
-						/>
-						<CandidateSectionHeader
-							presidentialCandidateName="Ganjar Pranowo"
-							standing="28,06%"
-						/>
+					</CandidateCard>
 
+					<CandidateCard
+						presidentialCandidate={{
+							name: 'Ganjar Pranowo',
+							photo: {
+								src: '/foto-kandidat/Ganjar_Pranowo.jpg',
+								alt: 'Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023',
+							},
+						}}
+						standing={0.2806}
+					>
 						<div>
 							<p className="scroll-m-20 font-semibold tracking-tight">
 								Kerja Sama Partai Politik Pengusung Ganjar Pranowo
@@ -244,7 +245,7 @@ export default function Home() {
 								}}
 							/>
 						</div>
-					</CandidateMainSection>
+					</CandidateCard>
 				</div>
 
 				<div className="flex flex-col gap-4">
@@ -306,72 +307,6 @@ export default function Home() {
 				</div>
 			</main>
 		</div>
-	);
-}
-
-function CandidateMainSection(props: any) {
-	return (
-		<div className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
-			{props.children}
-		</div>
-	);
-}
-
-function CandidateSectionHeader(props: any) {
-	return (
-		<div className="flex flex-col gap-4">
-			<div className="flex-1">
-				<PresidentialCandidateName>
-					{props.presidentialCandidateName}
-				</PresidentialCandidateName>
-
-				<VicePresidentialCandidateName>
-					{props.vicePresidentialCandidateName}
-				</VicePresidentialCandidateName>
-			</div>
-
-			<p className="flex flex-1 text-xs flex-col gap-1">
-				<span className="text-3xl font-extralight">{props.standing}</span>
-				<span className="flex items-center gap-1">
-					Perolehan suara partai pendukung pada pemilu 2019
-				</span>
-			</p>
-		</div>
-	);
-}
-
-function PresidentialCandidateName(props: any) {
-	return (
-		<h2 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
-			{props.children}
-		</h2>
-	);
-}
-
-function VicePresidentialCandidateName(props: any) {
-	return (
-		<h2
-			className={cn(
-				'scroll-m-20 text-xl tracking-tight transition-colors first:mt-0',
-				{ 'opacity-40': !props.children },
-				{ 'font-semibold': props.children },
-			)}
-		>
-			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
-		</h2>
-	);
-}
-
-function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
-	return (
-		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image
-			className="w-28 h-36 object-cover rounded-md"
-			priority
-			width={112}
-			height={144}
-			{...props}
-		/>
 	);
 }
 
