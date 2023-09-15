@@ -1,6 +1,12 @@
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import {
+	PoliticalPartyId,
+	politicalPartyData,
+} from '@/political-party/PoliticalParty';
+import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
+import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 
 export interface CandidateCardProps {
 	presidentialCandidate: {
@@ -17,8 +23,10 @@ export interface CandidateCardProps {
 			alt: string;
 		};
 	};
-	standing: number;
-	children: ReactNode;
+	coalition: {
+		name: string;
+		member: PoliticalPartyId[];
+	};
 }
 
 export function CandidateCard(props: CandidateCardProps) {
@@ -26,6 +34,20 @@ export function CandidateCard(props: CandidateCardProps) {
 		maximumFractionDigits: 2,
 		style: 'percent',
 	});
+
+	const partiesData = props.coalition.member.map(
+		(partyId) => politicalPartyData[partyId],
+	);
+
+	const totalPreviousPollStanding = partiesData.reduce(
+		(total, { previousPollPercentResult }) =>
+			total + (previousPollPercentResult || 0),
+		0,
+	);
+	const totalPreviousDPRSeats = partiesData.reduce(
+		(total, { previousDPRSeats }) => total + (previousDPRSeats || 0),
+		0,
+	);
 
 	return (
 		<div className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
@@ -48,14 +70,29 @@ export function CandidateCard(props: CandidateCardProps) {
 
 			<p className="flex flex-1 text-xs flex-col gap-1">
 				<span className="text-3xl font-extralight">
-					{percentageFormatter.format(props.standing)}
+					{percentageFormatter.format(totalPreviousPollStanding / 100)}
 				</span>
 				<span className="flex items-center gap-1">
 					Perolehan suara partai pendukung pada pemilu 2019
 				</span>
 			</p>
 
-			{props.children}
+			<div>
+				<p className="scroll-m-20 font-semibold tracking-tight">
+					{props.coalition.name}
+				</p>
+				{totalPreviousDPRSeats} / 575 Kursi DPR RI (2019 - 2024)
+			</div>
+
+			<div className="flex gap-2 flex-wrap">
+				{props.coalition.member.map((partyId) => (
+					<PoliticalPartyPopover
+						key={partyId}
+						id={partyId}
+						trigger={<PoliticalPartyChip id={partyId} />}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

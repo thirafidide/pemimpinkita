@@ -1,46 +1,12 @@
-import { Button } from '@/components/ui/Button';
 import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from '@/components/ui/Popover';
-import { PoliticalPartyId } from '@/political-party/PoliticalParty';
+	PoliticalPartyId,
+	politicalPartyData,
+} from '@/political-party/PoliticalParty';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
-import Image from 'next/image';
 
 export default function Home() {
-	const prabowoCoalitionMember: PoliticalPartyId[] = [
-		'GERINDRA',
-		'GOLKAR',
-		'PAN',
-		'PBB',
-		'GARUDA',
-		'GELORA',
-	];
-
-	const aniesCoalitionMember: PoliticalPartyId[] = [
-		'NASDEM',
-		'PKB',
-		'PKS',
-		'UMMAT',
-	];
-
-	const ganjarCoalitionMember: PoliticalPartyId[] = [
-		'PDIP',
-		'PPP',
-		'HANURA',
-		'PERINDO',
-	];
-
-	const partiesNotInCoalition: PoliticalPartyId[] = [
-		'DEMOKRAT',
-		'PSI',
-		'PKN',
-		'BURUH',
-	];
-
 	return (
 		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
@@ -66,25 +32,11 @@ export default function Home() {
 								alt: 'Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang',
 							},
 						}}
-						standing={0.3301}
-					>
-						<div>
-							<p className="scroll-m-20 font-semibold tracking-tight">
-								Koalisi Indonesia Maju
-							</p>
-							207 / 575 Kursi DPR RI (2019 - 2024)
-						</div>
-
-						<div className="flex flex-wrap gap-2">
-							{prabowoCoalitionMember.map((partyId) => (
-								<PoliticalPartyPopover
-									key={partyId}
-									id={partyId}
-									trigger={<PoliticalPartyChip id={partyId} />}
-								/>
-							))}
-						</div>
-					</CandidateCard>
+						coalition={{
+							name: 'Koalisi Indonesia Maju',
+							member: ['GERINDRA', 'GOLKAR', 'PAN', 'PBB', 'GARUDA', 'GELORA'],
+						}}
+					/>
 
 					<CandidateCard
 						presidentialCandidate={{
@@ -101,25 +53,11 @@ export default function Home() {
 								alt: 'Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang',
 							},
 						}}
-						standing={0.2695}
-					>
-						<div>
-							<p className="scroll-m-20 font-semibold tracking-tight">
-								Koalisi Perubahan untuk Persatuan
-							</p>
-							167 / 575 Kursi DPR RI (2019 - 2024)
-						</div>
-
-						<div className="flex flex-wrap gap-2">
-							{aniesCoalitionMember.map((partyId) => (
-								<PoliticalPartyPopover
-									key={partyId}
-									id={partyId}
-									trigger={<PoliticalPartyChip id={partyId} />}
-								/>
-							))}
-						</div>
-					</CandidateCard>
+						coalition={{
+							name: 'Koalisi Perubahan untuk Persatuan',
+							member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
+						}}
+					/>
 
 					<CandidateCard
 						presidentialCandidate={{
@@ -129,50 +67,60 @@ export default function Home() {
 								alt: 'Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023',
 							},
 						}}
-						standing={0.2806}
-					>
-						<div>
-							<p className="scroll-m-20 font-semibold tracking-tight">
-								Kerja Sama Partai Politik Pengusung Ganjar Pranowo
-							</p>
-							147 / 575 Kursi DPR RI (2019 - 2024)
-						</div>
-
-						<div className="flex gap-2 flex-wrap">
-							{ganjarCoalitionMember.map((partyId) => (
-								<PoliticalPartyPopover
-									key={partyId}
-									id={partyId}
-									trigger={<PoliticalPartyChip id={partyId} />}
-								/>
-							))}
-						</div>
-					</CandidateCard>
+						coalition={{
+							name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
+							member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
+						}}
+					/>
 				</div>
 
-				<div className="flex flex-col gap-4">
-					<p className="scroll-m-20 font-semibold tracking-tight">
-						Partai Nasional yang belum mendeklarasikan dukungan
-					</p>
-
-					<p className="flex flex-1 text-xs flex-col gap-1">
-						<span className="text-3xl font-extralight">9,66%</span>
-						<span className="flex items-center gap-1">
-							Total perolehan suara partai pada pemilu 2019
-						</span>
-					</p>
-
-					<div className="flex gap-2 flex-wrap">
-						{partiesNotInCoalition.map((partyId) => (
-							<PoliticalPartyPopover
-								key={partyId}
-								id={partyId}
-								trigger={<PoliticalPartyChip id={partyId} />}
-							/>
-						))}
-					</div>
-				</div>
+				<PartiesNotInCoalitionSection
+					parties={['DEMOKRAT', 'PSI', 'PKN', 'BURUH']}
+				/>
 			</main>
+		</div>
+	);
+}
+
+function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
+	const percentageFormatter = new Intl.NumberFormat('id-ID', {
+		maximumFractionDigits: 2,
+		style: 'percent',
+	});
+
+	const partiesData = props.parties.map(
+		(partyId) => politicalPartyData[partyId],
+	);
+	const totalPreviousPollStanding = partiesData.reduce(
+		(total, { previousPollPercentResult }) =>
+			total + (previousPollPercentResult || 0),
+		0,
+	);
+
+	return (
+		<div className="flex flex-col gap-4">
+			<p className="scroll-m-20 font-semibold tracking-tight">
+				Partai Nasional yang belum mendeklarasikan dukungan
+			</p>
+
+			<p className="flex flex-1 text-xs flex-col gap-1">
+				<span className="text-3xl font-extralight">
+					{percentageFormatter.format(totalPreviousPollStanding / 100)}
+				</span>
+				<span className="flex items-center gap-1">
+					Total perolehan suara partai pada pemilu 2019
+				</span>
+			</p>
+
+			<div className="flex gap-2 flex-wrap">
+				{props.parties.map((partyId) => (
+					<PoliticalPartyPopover
+						key={partyId}
+						id={partyId}
+						trigger={<PoliticalPartyChip id={partyId} />}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }
