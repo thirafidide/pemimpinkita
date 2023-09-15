@@ -39,15 +39,12 @@ export function CandidateCard(props: CandidateCardProps) {
 		(partyId) => politicalPartyData[partyId],
 	);
 
-	const totalPreviousPollStanding = partiesData.reduce(
-		(total, { previousPollPercentResult }) =>
-			total + (previousPollPercentResult || 0),
-		0,
-	);
-	const totalPreviousDPRSeats = partiesData.reduce(
-		(total, { previousDPRSeats }) => total + (previousDPRSeats || 0),
-		0,
-	);
+	let totalPreviousPollStanding = 0;
+	let totalPreviousDPRSeats = 0;
+	for (let { previousPollPercentResult, previousDPRSeats } of partiesData) {
+		totalPreviousPollStanding += previousPollPercentResult || 0;
+		totalPreviousDPRSeats += previousDPRSeats || 0;
+	}
 
 	return (
 		<div className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
