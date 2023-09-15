@@ -91,11 +91,13 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 	const partiesData = props.parties.map(
 		(partyId) => politicalPartyData[partyId],
 	);
-	const totalPreviousPollStanding = partiesData.reduce(
-		(total, { previousPollPercentResult }) =>
-			total + (previousPollPercentResult || 0),
-		0,
-	);
+
+	let totalPreviousPollStanding = 0;
+	let totalPreviousDPRSeats = 0;
+	for (let { previousPollPercentResult, previousDPRSeats } of partiesData) {
+		totalPreviousPollStanding += previousPollPercentResult || 0;
+		totalPreviousDPRSeats += previousDPRSeats || 0;
+	}
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -110,6 +112,11 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 				<span className="flex items-center gap-1">
 					Total perolehan suara partai pada pemilu 2019
 				</span>
+			</p>
+
+			<p className="text-sm">
+				<span className="font-bold text-2xl">{totalPreviousDPRSeats}</span> /
+				575 Kursi DPR RI (2019 - 2024)
 			</p>
 
 			<div className="flex gap-2 flex-wrap">
