@@ -11,6 +11,12 @@ export default function Home() {
 		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
 				<div className="flex flex-col gap-5 max-w-2xl">
+					<p className="scroll-m-20 text-xl font-extrabold tracking-tight">
+						<span className="bg-black px-4 py-2 -m-4 text-white">
+							PemimpinKita.org
+						</span>
+					</p>
+
 					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
 						Pemilu Presiden 2024
 					</h1>
