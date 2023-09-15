@@ -58,7 +58,7 @@ export function CandidateCard(props: CandidateCardProps) {
 				)}
 			</div>
 
-			<div className="flex-1">
+			<div>
 				<PresidentialCandidateName>
 					{props.presidentialCandidate.name}
 				</PresidentialCandidateName>
@@ -68,7 +68,7 @@ export function CandidateCard(props: CandidateCardProps) {
 				</VicePresidentialCandidateName>
 			</div>
 
-			<p className="flex flex-1 text-xs flex-col gap-1">
+			<p className="flex text-xs flex-col gap-1">
 				<span className="text-3xl font-extralight">
 					{percentageFormatter.format(totalPreviousPollStanding / 100)}
 				</span>
@@ -77,21 +77,26 @@ export function CandidateCard(props: CandidateCardProps) {
 				</span>
 			</p>
 
-			<div>
-				<p className="scroll-m-20 font-semibold tracking-tight">
-					{props.coalition.name}
-				</p>
-				{totalPreviousDPRSeats} / 575 Kursi DPR RI (2019 - 2024)
-			</div>
+			<div className="flex flex-col gap-3">
+				<div>
+					<p className="scroll-m-20 font-semibold tracking-tight">
+						{props.coalition.name}
+					</p>
+					<p className="text-sm">
+						<span className="font-bold text-2xl">{totalPreviousDPRSeats}</span>{' '}
+						/ 575 Kursi DPR RI (2019 - 2024)
+					</p>
+				</div>
 
-			<div className="flex gap-2 flex-wrap">
-				{props.coalition.member.map((partyId) => (
-					<PoliticalPartyPopover
-						key={partyId}
-						id={partyId}
-						trigger={<PoliticalPartyChip id={partyId} />}
-					/>
-				))}
+				<div className="flex gap-2 flex-wrap">
+					{props.coalition.member.map((partyId) => (
+						<PoliticalPartyPopover
+							key={partyId}
+							id={partyId}
+							trigger={<PoliticalPartyChip id={partyId} />}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
