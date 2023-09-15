@@ -7,43 +7,58 @@ import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, GithubIcon } from 'lucide-react';
 
 export default function Home() {
 	return (
 		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
-				<div className="flex flex-col gap-5 max-w-2xl">
-					<p className="scroll-m-20 text-xl font-extrabold tracking-tight">
-						<span className="bg-black px-4 py-2 -m-4 text-white">
-							PemimpinKita.org
-						</span>
-					</p>
+				<div className="flex flex-col gap-8">
+					<div className="flex">
+						<div className="scroll-m-20 text-xl font-extrabold tracking-tight">
+							<p className="bg-black px-4 py-2 -ml-4 text-white">
+								PemimpinKita.org
+							</p>
+						</div>
 
-					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
-						Pemilu Presiden 2024
-					</h1>
+						<div className="flex-1" />
 
-					<div className="flex flex-col gap-1">
-						<p>
-							Kondisi sementara kandidat capres-cawapres dan koalisi partai
-							pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
-							berdasarkan partai pendukung dan perolehan suara pada Pemilu
-							sebelumnya (2019)
-						</p>
+						<Button variant="outline" asChild>
+							<Link
+								href="https://github.com/thirafidide/pemimpinkita"
+								target="_blank"
+							>
+								<GithubIcon className="h-4 w-4 mr-2" /> Github
+							</Link>
+						</Button>
+					</div>
 
-						<p className="text-sm">
-							Sumber Data:{' '}
-							<Button variant="link" className="p-0" asChild>
-								<Link
-									href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
-									target="_blank"
-								>
-									KPU - Info Publik Pemilu 2019
-									<ExternalLink size={14} className="ml-1" />
-								</Link>
-							</Button>
-						</p>
+					<div className="flex flex-col gap-6">
+						<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
+							Pemilu Presiden 2024
+						</h1>
+
+						<div className="flex flex-col gap-1 max-w-2xl">
+							<p>
+								Kondisi sementara kandidat capres-cawapres dan koalisi partai
+								pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia
+								2024, berdasarkan partai pendukung dan perolehan suara pada
+								Pemilu sebelumnya (2019)
+							</p>
+
+							<p className="text-sm">
+								Sumber Data:{' '}
+								<Button variant="link" className="p-0" asChild>
+									<Link
+										href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
+										target="_blank"
+									>
+										KPU - Info Publik Pemilu 2019
+										<ExternalLink size={14} className="ml-1" />
+									</Link>
+								</Button>
+							</p>
+						</div>
 					</div>
 				</div>
 
