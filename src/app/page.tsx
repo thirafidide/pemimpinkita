@@ -17,7 +17,7 @@ export default function Home() {
 				<div className="flex flex-col gap-8">
 					<div className="flex gap-2">
 						<div className="scroll-m-20 text-xl font-extrabold tracking-tight">
-							<p className="bg-black px-4 py-2 -ml-4 text-white">
+							<p className="bg-foreground px-4 py-2 -ml-4 text-background">
 								PemimpinKita.org
 							</p>
 						</div>
