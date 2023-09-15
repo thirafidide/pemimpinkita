@@ -11,7 +11,7 @@ export default function Home() {
 		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
 				<div className="flex flex-col gap-5 max-w-2xl">
-					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-5xl">
+					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
 						Pemilu Presiden 2024
 					</h1>
 
