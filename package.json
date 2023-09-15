@@ -1,7 +1,7 @@
 {
 	"name": "pemimpinkita-pemilu2024",
-	"version": "0.1.0",
-	"private": true,
+	"version": "1.0.0",
+	"license": "MIT",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
