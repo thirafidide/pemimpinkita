@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/Button';
 import {
 	PoliticalPartyId,
 	politicalPartyData,
@@ -5,6 +6,8 @@ import {
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
 
 export default function Home() {
 	return (
@@ -21,12 +24,27 @@ export default function Home() {
 						Pemilu Presiden 2024
 					</h1>
 
-					<p>
-						Kondisi sementara kandidat capres-cawapres dan koalisi partai
-						pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
-						berdasarkan partai pendukung dan perolehan suara pada Pemilu
-						sebelumnya (2019)
-					</p>
+					<div className="flex flex-col gap-1">
+						<p>
+							Kondisi sementara kandidat capres-cawapres dan koalisi partai
+							pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
+							berdasarkan partai pendukung dan perolehan suara pada Pemilu
+							sebelumnya (2019)
+						</p>
+
+						<p className="text-sm">
+							Sumber Data:{' '}
+							<Button variant="link" className="p-0" asChild>
+								<Link
+									href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
+									target="_blank"
+								>
+									KPU - Info Publik Pemilu 2019
+									<ExternalLink size={14} className="ml-1" />
+								</Link>
+							</Button>
+						</p>
+					</div>
 				</div>
 
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">

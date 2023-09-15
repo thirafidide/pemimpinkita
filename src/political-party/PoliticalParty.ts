@@ -35,7 +35,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PKB: {
 		name: 'PKB',
 		fullName: 'Partai Kebangkitan Bangsa',
-		previousPollPercentResult: 9.69,
+		previousPollPercentResult: 9.72,
 		previousDPRSeats: 58,
 		logo: {
 			src: '/partai-politik/pkb.png',
@@ -47,7 +47,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	GERINDRA: {
 		name: 'Gerindra',
 		fullName: 'Partai Gerakan Indonesia Raya',
-		previousPollPercentResult: 12.57,
+		previousPollPercentResult: 12.51,
 		previousDPRSeats: 78,
 		logo: {
 			src: '/partai-politik/gerindra.png',
@@ -59,7 +59,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	GOLKAR: {
 		name: 'Golkar',
 		fullName: 'Partai Golongan Karya',
-		previousPollPercentResult: 12.31,
+		previousPollPercentResult: 12.15,
 		previousDPRSeats: 85,
 		logo: {
 			src: '/partai-politik/golkar.png',
@@ -71,7 +71,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PAN: {
 		name: 'PAN',
 		fullName: 'Partai Amanat Nasional',
-		previousPollPercentResult: 6.84,
+		previousPollPercentResult: 6.74,
 		previousDPRSeats: 44,
 		logo: {
 			src: '/partai-politik/pan.png',
@@ -95,7 +95,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	GARUDA: {
 		name: 'Garuda',
 		fullName: 'Partai Garda Perubahan Indonesia',
-		previousPollPercentResult: 0.5,
+		previousPollPercentResult: 0.52,
 		previousDPRSeats: 0,
 		logo: {
 			src: '/partai-politik/garuda.png',
@@ -118,7 +118,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	NASDEM: {
 		name: 'NasDem',
 		fullName: 'Partai Nasional Demokrat',
-		previousPollPercentResult: 9.05,
+		previousPollPercentResult: 8.81,
 		previousDPRSeats: 59,
 		logo: {
 			src: '/partai-politik/nasdem.png',
@@ -130,7 +130,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PKS: {
 		name: 'PKS',
 		fullName: 'Partai Keadilan Sejahtera',
-		previousPollPercentResult: 8.21,
+		previousPollPercentResult: 8.19,
 		previousDPRSeats: 50,
 		logo: {
 			src: '/partai-politik/pks.png',
@@ -153,7 +153,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PDIP: {
 		name: 'PDI-P',
 		fullName: 'Partai Demokrasi Indonesia Perjuangan',
-		previousPollPercentResult: 19.33,
+		previousPollPercentResult: 19.91,
 		previousDPRSeats: 128,
 		logo: {
 			src: '/partai-politik/pdip.png',
@@ -165,7 +165,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PPP: {
 		name: 'PPP',
 		fullName: 'Partai Persatuan Pembangunan',
-		previousPollPercentResult: 4.52,
+		previousPollPercentResult: 4.51,
 		previousDPRSeats: 19,
 		logo: {
 			src: '/partai-politik/ppp.png',
@@ -177,7 +177,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	HANURA: {
 		name: 'Hanura',
 		fullName: 'Partai Hati Nurani Rakyat',
-		previousPollPercentResult: 1.54,
+		previousPollPercentResult: 1.56,
 		previousDPRSeats: 0,
 		logo: {
 			src: '/partai-politik/hanura.png',
@@ -189,7 +189,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PERINDO: {
 		name: 'Perindo',
 		fullName: 'Partai Persatuan Indonesia',
-		previousPollPercentResult: 2.67,
+		previousPollPercentResult: 2.68,
 		previousDPRSeats: 0,
 		logo: {
 			src: '/partai-politik/perindo.png',
@@ -201,7 +201,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	DEMOKRAT: {
 		name: 'Demokrat',
 		fullName: 'Partai Demokrat',
-		previousPollPercentResult: 7.77,
+		previousPollPercentResult: 7.64,
 		previousDPRSeats: 54,
 		logo: {
 			src: '/partai-politik/demokrat.png',
