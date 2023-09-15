@@ -47,7 +47,7 @@ export function CandidateCard(props: CandidateCardProps) {
 	}
 
 	return (
-		<div className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
+		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			<div className="flex gap-2">
 				<CandidatePhoto {...props.presidentialCandidate.photo} />
 				{props.vicePresidentialCandidate && (
@@ -74,7 +74,7 @@ export function CandidateCard(props: CandidateCardProps) {
 				</span>
 			</p>
 
-			<div className="flex flex-col gap-3">
+			<section className="flex flex-col gap-3">
 				<div>
 					<p className="scroll-m-20 font-semibold tracking-tight">
 						{props.coalition.name}
@@ -94,8 +94,8 @@ export function CandidateCard(props: CandidateCardProps) {
 						/>
 					))}
 				</div>
-			</div>
-		</div>
+			</section>
+		</article>
 	);
 }
 
