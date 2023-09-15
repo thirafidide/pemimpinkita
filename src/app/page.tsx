@@ -12,7 +12,7 @@ import { ModeToggle } from '@/components/ModeToggle';
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
+		<div className="min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
 				<div className="flex flex-col gap-8">
 					<div className="flex gap-2">
