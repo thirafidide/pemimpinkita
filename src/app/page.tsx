@@ -106,12 +106,12 @@ export default function Home() {
 	);
 }
 
-function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
-	const percentageFormatter = new Intl.NumberFormat('id-ID', {
-		maximumFractionDigits: 2,
-		style: 'percent',
-	});
+const percentageFormatter = new Intl.NumberFormat('id-ID', {
+	maximumFractionDigits: 2,
+	style: 'percent',
+});
 
+function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 	const partiesData = props.parties.map(
 		(partyId) => politicalPartyData[partyId],
 	);

@@ -8,6 +8,11 @@ import {
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 
+const percentageFormatter = new Intl.NumberFormat('id-ID', {
+	maximumFractionDigits: 2,
+	style: 'percent',
+});
+
 export interface CandidateCardProps {
 	presidentialCandidate: {
 		name: string;
@@ -30,11 +35,6 @@ export interface CandidateCardProps {
 }
 
 export function CandidateCard(props: CandidateCardProps) {
-	const percentageFormatter = new Intl.NumberFormat('id-ID', {
-		maximumFractionDigits: 2,
-		style: 'percent',
-	});
-
 	const partiesData = props.coalition.member.map(
 		(partyId) => politicalPartyData[partyId],
 	);
