@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { cn } from '../lib/utils';
+import { Topbar } from '@/components/Topbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,11 +21,21 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="id">
-			<body className={inter.className}>
+			<body
+				className={cn(
+					inter.className,
+					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 pt-20',
+				)}
+			>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					{children}
+					<div className="flex flex-col gap-8">
+						<Topbar />
+
+						{children}
+					</div>
 				</ThemeProvider>
 			</body>
+
 			<Analytics />
 		</html>
 	);
