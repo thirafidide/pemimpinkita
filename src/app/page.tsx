@@ -15,21 +15,34 @@ export default function Home() {
 		<div className="min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
 				<div className="flex flex-col gap-8">
-					<div className="flex gap-2">
-						<div className="scroll-m-20 text-xl font-extrabold tracking-tight">
-							<p className="bg-foreground px-4 py-2 -ml-4 text-background">
-								PemimpinKita.org
-							</p>
-						</div>
+					<div className="flex">
+						<Button
+							variant="link"
+							className="rounded-none bg-foreground px-4 py-2 -ml-4 text-background scroll-m-20 text-xl font-extrabold tracking-tight"
+							asChild
+						>
+							<Link href="/">PemimpinKita.org</Link>
+						</Button>
 
 						<div className="flex-1" />
 
-						<Button variant="outline" asChild>
+						{/* TODO make this menu as dropdown for mobile view */}
+						<div className="hidden sm:flex">
+							<Button variant="link" asChild>
+								<Link href="/">Pilpres 2024</Link>
+							</Button>
+
+							<Button variant="link" asChild>
+								<Link href="/simulasi-koalisi">Simulasi Koalisi</Link>
+							</Button>
+						</div>
+
+						<Button variant="link" size="icon" asChild>
 							<Link
 								href="https://github.com/thirafidide/pemimpinkita"
 								target="_blank"
 							>
-								<GithubIcon className="h-4 w-4 mr-2" /> Github
+								<GithubIcon className="h-4 w-4" />
 							</Link>
 						</Button>
 
