@@ -12,33 +12,31 @@ import { ExternalLink } from 'lucide-react';
 export default function Home() {
 	return (
 		<main className="flex flex-col gap-12 container p-0 mx-auto">
-			<div className="flex flex-col gap-8">
-				<div className="flex flex-col gap-6">
-					<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
-						Pemilu Presiden 2024
-					</h1>
+			<div className="flex flex-col gap-6">
+				<h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight">
+					Pemilu Presiden 2024
+				</h1>
 
-					<div className="flex flex-col gap-1 max-w-2xl">
-						<p>
-							Kondisi sementara kandidat capres-cawapres dan koalisi partai
-							pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
-							berdasarkan partai pendukung dan perolehan suara pada Pemilu
-							sebelumnya (2019)
-						</p>
+				<div className="flex flex-col gap-1 max-w-2xl">
+					<p>
+						Kondisi sementara kandidat capres-cawapres dan koalisi partai
+						pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
+						berdasarkan partai pendukung dan perolehan suara pada Pemilu
+						sebelumnya (2019)
+					</p>
 
-						<p className="text-sm">
-							Sumber Data:{' '}
-							<Button variant="link" className="p-0" asChild>
-								<Link
-									href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
-									target="_blank"
-								>
-									KPU - Info Publik Pemilu 2019
-									<ExternalLink size={14} className="ml-1" />
-								</Link>
-							</Button>
-						</p>
-					</div>
+					<p className="text-sm">
+						Sumber Data:{' '}
+						<Button variant="link" className="p-0" asChild>
+							<Link
+								href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
+								target="_blank"
+							>
+								KPU - Info Publik Pemilu 2019
+								<ExternalLink size={14} className="ml-1" />
+							</Link>
+						</Button>
+					</p>
 				</div>
 			</div>
 
