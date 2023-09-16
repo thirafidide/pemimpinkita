@@ -44,7 +44,7 @@ function DnDTestApp() {
 		'PKN',
 	]);
 	const [testCoalition, setTestCoalition] = useState<PoliticalPartyId[]>([
-		'PDIP',
+		'PKS',
 	]);
 
 	function handleDragEnd(event: DragEndEvent) {
@@ -71,9 +71,7 @@ function DnDTestApp() {
 			<Droppable id="non-coalition">
 				<div className="flex-wrap">
 					{nonCoalition.map((party) => (
-						<Draggable key={party} id={party}>
-							<PoliticalPartyChip id={party} />
-						</Draggable>
+						<Draggable key={party} party={party} />
 					))}
 				</div>
 			</Droppable>
@@ -81,9 +79,7 @@ function DnDTestApp() {
 			<Droppable id="test-coalition">
 				<div className="flex-wrap">
 					{testCoalition.map((party) => (
-						<Draggable key={party} id={party}>
-							<PoliticalPartyChip id={party} />
-						</Draggable>
+						<Draggable key={party} party={party} />
 					))}
 				</div>
 			</Droppable>
@@ -105,7 +101,7 @@ function Droppable(props: any) {
 
 function Draggable(props: any) {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
-		id: props.id,
+		id: props.party,
 	});
 	const style = transform
 		? {
@@ -114,8 +110,12 @@ function Draggable(props: any) {
 		: undefined;
 
 	return (
-		<button ref={setNodeRef} style={style} {...listeners} {...attributes}>
-			{props.children}
-		</button>
+		<PoliticalPartyChip
+			ref={setNodeRef}
+			style={style}
+			party={props.party}
+			{...listeners}
+			{...attributes}
+		/>
 	);
 }

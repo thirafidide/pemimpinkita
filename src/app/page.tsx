@@ -146,7 +146,7 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 					<PoliticalPartyPopover
 						key={partyId}
 						id={partyId}
-						trigger={<PoliticalPartyChip id={partyId} />}
+						trigger={<PoliticalPartyChip party={partyId} />}
 					/>
 				))}
 			</div>
