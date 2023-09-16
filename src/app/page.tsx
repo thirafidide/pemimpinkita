@@ -8,15 +8,16 @@ import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
 import Link from 'next/link';
 import { ExternalLink, GithubIcon } from 'lucide-react';
+import { ModeToggle } from '@/components/ModeToggle';
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-[#FCFCFC] p-8 lg:p-24 pt-20">
+		<div className="min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 pt-20">
 			<main className="flex flex-col gap-12 container p-0 mx-auto">
 				<div className="flex flex-col gap-8">
-					<div className="flex">
+					<div className="flex gap-2">
 						<div className="scroll-m-20 text-xl font-extrabold tracking-tight">
-							<p className="bg-black px-4 py-2 -ml-4 text-white">
+							<p className="bg-foreground px-4 py-2 -ml-4 text-background">
 								PemimpinKita.org
 							</p>
 						</div>
@@ -31,6 +32,8 @@ export default function Home() {
 								<GithubIcon className="h-4 w-4 mr-2" /> Github
 							</Link>
 						</Button>
+
+						<ModeToggle />
 					</div>
 
 					<div className="flex flex-col gap-6">
