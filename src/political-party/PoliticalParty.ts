@@ -19,6 +19,7 @@ export type PoliticalPartyId =
 	| 'UMMAT';
 
 export interface PoliticalParty {
+	partyId: PoliticalPartyId;
 	name: string;
 	fullName: string;
 	logo: {
@@ -33,6 +34,7 @@ export interface PoliticalParty {
 
 export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PKB: {
+		partyId: 'PKB',
 		name: 'PKB',
 		fullName: 'Partai Kebangkitan Bangsa',
 		previousPollPercentResult: 9.72,
@@ -45,6 +47,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	GERINDRA: {
+		partyId: 'GERINDRA',
 		name: 'Gerindra',
 		fullName: 'Partai Gerakan Indonesia Raya',
 		previousPollPercentResult: 12.51,
@@ -57,6 +60,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	GOLKAR: {
+		partyId: 'GOLKAR',
 		name: 'Golkar',
 		fullName: 'Partai Golongan Karya',
 		previousPollPercentResult: 12.15,
@@ -69,6 +73,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PAN: {
+		partyId: 'PAN',
 		name: 'PAN',
 		fullName: 'Partai Amanat Nasional',
 		previousPollPercentResult: 6.74,
@@ -81,6 +86,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PBB: {
+		partyId: 'PBB',
 		name: 'PBB',
 		fullName: 'Partai Bulan Bintang',
 		previousPollPercentResult: 0.79,
@@ -93,6 +99,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	GARUDA: {
+		partyId: 'GARUDA',
 		name: 'Garuda',
 		fullName: 'Partai Garda Perubahan Indonesia',
 		previousPollPercentResult: 0.52,
@@ -105,6 +112,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	GELORA: {
+		partyId: 'GELORA',
 		name: 'Gelora',
 		fullName: 'Partai Gelombang Rakyat Indonesia',
 		newPartyIn2024: true,
@@ -116,6 +124,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	NASDEM: {
+		partyId: 'NASDEM',
 		name: 'NasDem',
 		fullName: 'Partai Nasional Demokrat',
 		previousPollPercentResult: 8.81,
@@ -128,6 +137,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PKS: {
+		partyId: 'PKS',
 		name: 'PKS',
 		fullName: 'Partai Keadilan Sejahtera',
 		previousPollPercentResult: 8.19,
@@ -140,6 +150,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	UMMAT: {
+		partyId: 'UMMAT',
 		name: 'Ummat',
 		fullName: 'Partai Ummat',
 		newPartyIn2024: true,
@@ -151,6 +162,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PDIP: {
+		partyId: 'PDIP',
 		name: 'PDI-P',
 		fullName: 'Partai Demokrasi Indonesia Perjuangan',
 		previousPollPercentResult: 19.91,
@@ -163,6 +175,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PPP: {
+		partyId: 'PPP',
 		name: 'PPP',
 		fullName: 'Partai Persatuan Pembangunan',
 		previousPollPercentResult: 4.51,
@@ -175,6 +188,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	HANURA: {
+		partyId: 'HANURA',
 		name: 'Hanura',
 		fullName: 'Partai Hati Nurani Rakyat',
 		previousPollPercentResult: 1.56,
@@ -187,6 +201,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PERINDO: {
+		partyId: 'PERINDO',
 		name: 'Perindo',
 		fullName: 'Partai Persatuan Indonesia',
 		previousPollPercentResult: 2.68,
@@ -199,6 +214,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	DEMOKRAT: {
+		partyId: 'DEMOKRAT',
 		name: 'Demokrat',
 		fullName: 'Partai Demokrat',
 		previousPollPercentResult: 7.64,
@@ -211,6 +227,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PSI: {
+		partyId: 'PSI',
 		name: 'PSI',
 		fullName: 'Partai Solidaritas Indonesia',
 		previousPollPercentResult: 1.89,
@@ -223,6 +240,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	PKN: {
+		partyId: 'PKN',
 		name: 'PKN',
 		fullName: 'Partai Kebangkitan Nusantara',
 		newPartyIn2024: true,
@@ -234,6 +252,7 @@ export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	},
 
 	BURUH: {
+		partyId: 'BURUH',
 		name: 'Buruh',
 		fullName: 'Partai Buruh',
 		newPartyIn2024: true,

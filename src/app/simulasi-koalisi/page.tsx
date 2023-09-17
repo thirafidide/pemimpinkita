@@ -1,16 +1,82 @@
 'use client';
 
-import { PoliticalPartyId } from '@/political-party/PoliticalParty';
-import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
+import { CoalitionSimulationCard } from '@/coalition-simulation/CoalitionSimulationCard';
+import { DraggablePoliticalPartyChip } from '@/coalition-simulation/DraggablePoliticalPartyChip';
 import {
-	DndContext,
-	DragEndEvent,
-	useDraggable,
-	useDroppable,
-} from '@dnd-kit/core';
-import { useState } from 'react';
+	PoliticalPartyId,
+	politicalPartyData,
+} from '@/political-party/PoliticalParty';
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 export default function CoalitionSimulation() {
+	const [prabowoCoalitionMember, setPrabowoCoalitionMember] = useState<
+		PoliticalPartyId[]
+	>(['GERINDRA', 'GOLKAR', 'PAN', 'PBB', 'GARUDA', 'GELORA']);
+	const [aniesCoalitionMember, setAniesCoalitionMember] = useState<
+		PoliticalPartyId[]
+	>(['NASDEM', 'PKB', 'PKS', 'UMMAT']);
+	const [ganjarCoalitionMember, setGanjarCoalitionMember] = useState<
+		PoliticalPartyId[]
+	>(['PDIP', 'PPP', 'HANURA', 'PERINDO']);
+	const [nonCoalitionMember, setNonCoalitionMember] = useState<
+		PoliticalPartyId[]
+	>(['DEMOKRAT', 'PSI', 'PKN', 'BURUH']);
+
+	function addToCoalition(
+		coalitionSetter: Dispatch<SetStateAction<PoliticalPartyId[]>>,
+		party: PoliticalPartyId,
+	) {
+		coalitionSetter((coalition) => {
+			if (coalition.includes(party)) {
+				return coalition;
+			}
+
+			return coalition.concat(party);
+		});
+	}
+
+	function removeFromCoalition(
+		coalitionSetter: Dispatch<SetStateAction<PoliticalPartyId[]>>,
+		party: PoliticalPartyId,
+	) {
+		return coalitionSetter((coalition) =>
+			coalition.filter((id) => id !== party),
+		);
+	}
+
+	function handleDragEnd(event: DragEndEvent) {
+		const { active, over } = event;
+		const party = active.id as PoliticalPartyId;
+
+		switch (over?.id) {
+			case 'prabowo-coalition':
+				addToCoalition(setPrabowoCoalitionMember, party);
+				removeFromCoalition(setAniesCoalitionMember, party);
+				removeFromCoalition(setGanjarCoalitionMember, party);
+				removeFromCoalition(setNonCoalitionMember, party);
+				break;
+			case 'anies-coalition':
+				removeFromCoalition(setPrabowoCoalitionMember, party);
+				addToCoalition(setAniesCoalitionMember, party);
+				removeFromCoalition(setGanjarCoalitionMember, party);
+				removeFromCoalition(setNonCoalitionMember, party);
+				break;
+			case 'ganjar-coalition':
+				removeFromCoalition(setPrabowoCoalitionMember, party);
+				removeFromCoalition(setAniesCoalitionMember, party);
+				addToCoalition(setGanjarCoalitionMember, party);
+				removeFromCoalition(setNonCoalitionMember, party);
+				break;
+			default:
+				removeFromCoalition(setPrabowoCoalitionMember, party);
+				removeFromCoalition(setAniesCoalitionMember, party);
+				removeFromCoalition(setGanjarCoalitionMember, party);
+				addToCoalition(setNonCoalitionMember, party);
+				break;
+		}
+	}
+
 	return (
 		<main className="flex flex-col gap-12 container p-0 mx-auto">
 			<div className="flex flex-col gap-6">
@@ -31,91 +97,91 @@ export default function CoalitionSimulation() {
 				</div>
 			</div>
 
-			<DnDTestApp />
+			<DndContext onDragEnd={handleDragEnd}>
+				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
+					<CoalitionSimulationCard
+						presidentialCandidate={{
+							name: 'Prabowo Subianto',
+							photo: {
+								src: '/foto-kandidat/Prabowo_Subianto.jpg',
+								alt: 'Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang',
+							},
+						}}
+						coalitionId="prabowo-coalition"
+						coalitionMember={prabowoCoalitionMember}
+					/>
+
+					<CoalitionSimulationCard
+						presidentialCandidate={{
+							name: 'Anies Baswedan',
+							photo: {
+								src: '/foto-kandidat/Anies_Baswedan.jpg',
+								alt: 'Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022',
+							},
+						}}
+						vicePresidentialCandidate={{
+							name: 'Muhaimin Iskandar',
+							photo: {
+								src: '/foto-kandidat/Muhaimin_Iskandar.jpg',
+								alt: 'Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang',
+							},
+						}}
+						coalitionId="anies-coalition"
+						coalitionMember={aniesCoalitionMember}
+					/>
+
+					<CoalitionSimulationCard
+						presidentialCandidate={{
+							name: 'Ganjar Pranowo',
+							photo: {
+								src: '/foto-kandidat/Ganjar_Pranowo.jpg',
+								alt: 'Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023',
+							},
+						}}
+						coalitionId="ganjar-coalition"
+						coalitionMember={ganjarCoalitionMember}
+					/>
+				</div>
+
+				<PartiesNotInCoalitionSection parties={nonCoalitionMember} />
+			</DndContext>
 		</main>
 	);
 }
 
-function DnDTestApp() {
-	const [nonCoalition, setNonCoalition] = useState<PoliticalPartyId[]>([
-		'BURUH',
-		'DEMOKRAT',
-		'PSI',
-		'PKN',
-	]);
-	const [testCoalition, setTestCoalition] = useState<PoliticalPartyId[]>([
-		'PKS',
-	]);
+const percentageFormatter = new Intl.NumberFormat('id-ID', {
+	maximumFractionDigits: 2,
+	style: 'percent',
+});
 
-	function handleDragEnd(event: DragEndEvent) {
-		const { active, over } = event;
-		const coalition =
-			over?.id === 'test-coalition' ? testCoalition : nonCoalition;
+function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
+	const partiesData = props.parties
+		.map((partyId) => politicalPartyData[partyId])
+		.sort(
+			(partyA, partyB) =>
+				(partyB.previousPollPercentResult || 0) -
+				(partyA.previousPollPercentResult || 0),
+		);
 
-		// @ts-ignore
-		if (!coalition.includes(active.id)) {
-			if (over?.id === 'test-coalition') {
-				// @ts-ignore
-				setTestCoalition([...coalition, active.id]);
-				setNonCoalition(nonCoalition.filter((id) => id !== active.id));
-			} else {
-				// @ts-ignore
-				setNonCoalition([...coalition, active.id]);
-				setTestCoalition(testCoalition.filter((id) => id !== active.id));
-			}
-		}
+	let totalPreviousPollStanding = 0;
+	let totalPreviousDPRSeats = 0;
+	for (let { previousPollPercentResult, previousDPRSeats } of partiesData) {
+		totalPreviousPollStanding += previousPollPercentResult || 0;
+		totalPreviousDPRSeats += previousDPRSeats || 0;
 	}
 
 	return (
-		<DndContext onDragEnd={handleDragEnd}>
-			<Droppable id="non-coalition">
-				<div className="flex-wrap">
-					{nonCoalition.map((party) => (
-						<Draggable key={party} party={party} />
-					))}
-				</div>
-			</Droppable>
+		<div className="flex flex-col gap-4">
+			<p className="text-sm">
+				Tekan dan seret partai di bawah ini dan taruh di koalisi yang anda
+				inginkan
+			</p>
 
-			<Droppable id="test-coalition">
-				<div className="flex-wrap">
-					{testCoalition.map((party) => (
-						<Draggable key={party} party={party} />
-					))}
-				</div>
-			</Droppable>
-		</DndContext>
-	);
-}
-
-function Droppable(props: any) {
-	const { isOver, setNodeRef } = useDroppable({
-		id: props.id,
-	});
-
-	return (
-		<div ref={setNodeRef} className={isOver ? 'bg-slate-400' : 'bg-slate-600'}>
-			{props.children}
+			<div className="flex gap-2 flex-wrap">
+				{partiesData.map(({ partyId }) => (
+					<DraggablePoliticalPartyChip key={partyId} party={partyId} />
+				))}
+			</div>
 		</div>
-	);
-}
-
-function Draggable(props: any) {
-	const { attributes, listeners, setNodeRef, transform } = useDraggable({
-		id: props.party,
-	});
-	const style = transform
-		? {
-				transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-		  }
-		: undefined;
-
-	return (
-		<PoliticalPartyChip
-			ref={setNodeRef}
-			style={style}
-			party={props.party}
-			{...listeners}
-			{...attributes}
-		/>
 	);
 }
