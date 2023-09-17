@@ -54,13 +54,14 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 
 	return (
 		<article
+			id={props.coalitionId}
 			ref={setNodeRef}
 			className={cn(
 				'flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4',
 				{ 'opacity-50': active && !isOver },
 			)}
 		>
-			<div className="flex gap-2">
+			<div className={cn('gap-2', { 'hidden md:flex': active, flex: !active })}>
 				<CandidatePhoto {...props.presidentialCandidate.photo} />
 				{props.vicePresidentialCandidate && (
 					<CandidatePhoto {...props.vicePresidentialCandidate.photo} />
@@ -77,7 +78,12 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 				</VicePresidentialCandidateName>
 			</div>
 
-			<p className="flex text-xs flex-col gap-1">
+			<p
+				className={cn('text-xs flex-col gap-1', {
+					'hidden md:flex': active,
+					flex: !active,
+				})}
+			>
 				<span className="text-3xl font-extralight">
 					{percentageFormatter.format(totalPreviousPollStanding / 100)}
 				</span>
@@ -87,7 +93,7 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 			</p>
 
 			<section className="flex flex-col gap-3">
-				<div>
+				<div className={cn({ 'hidden md:block': active })}>
 					<p className="scroll-m-20 font-semibold tracking-tight">
 						Simulasi Koalisi
 					</p>

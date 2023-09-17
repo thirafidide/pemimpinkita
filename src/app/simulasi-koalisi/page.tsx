@@ -45,6 +45,14 @@ export default function CoalitionSimulation() {
 		);
 	}
 
+	function scrollToCoalition(coalitionId: string) {
+		const element = document.getElementById(coalitionId);
+		if (element) {
+			// Delay for a bit to wait for coalition images and info to appear so no more relayout
+			setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 50);
+		}
+	}
+
 	function handleDragEnd(event: DragEndEvent) {
 		const { active, over } = event;
 		const party = active.id as PoliticalPartyId;
@@ -55,18 +63,24 @@ export default function CoalitionSimulation() {
 				removeFromCoalition(setAniesCoalitionMember, party);
 				removeFromCoalition(setGanjarCoalitionMember, party);
 				removeFromCoalition(setNonCoalitionMember, party);
+
+				scrollToCoalition('prabowo-coalition');
 				break;
 			case 'anies-coalition':
 				removeFromCoalition(setPrabowoCoalitionMember, party);
 				addToCoalition(setAniesCoalitionMember, party);
 				removeFromCoalition(setGanjarCoalitionMember, party);
 				removeFromCoalition(setNonCoalitionMember, party);
+
+				scrollToCoalition('anies-coalition');
 				break;
 			case 'ganjar-coalition':
 				removeFromCoalition(setPrabowoCoalitionMember, party);
 				removeFromCoalition(setAniesCoalitionMember, party);
 				addToCoalition(setGanjarCoalitionMember, party);
 				removeFromCoalition(setNonCoalitionMember, party);
+
+				scrollToCoalition('ganjar-coalition');
 				break;
 			default:
 				removeFromCoalition(setPrabowoCoalitionMember, party);
