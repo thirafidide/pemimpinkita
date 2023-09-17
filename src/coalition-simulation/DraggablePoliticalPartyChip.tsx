@@ -23,6 +23,7 @@ export function DraggablePoliticalPartyChip(
 			ref={setNodeRef}
 			style={style}
 			party={props.party}
+			className="touch-none"
 			{...listeners}
 			{...attributes}
 		/>
