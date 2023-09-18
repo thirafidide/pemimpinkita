@@ -152,12 +152,11 @@ export default function CoalitionSimulation() {
 	);
 }
 
-const percentageFormatter = new Intl.NumberFormat('id-ID', {
-	maximumFractionDigits: 2,
-	style: 'percent',
-});
-
 function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
+	if (props.parties.length <= 0) {
+		return null;
+	}
+
 	const partiesData = props.parties
 		.map((partyId) => politicalPartyData[partyId])
 		.sort(
@@ -165,13 +164,6 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 				(partyB.previousPollPercentResult || 0) -
 				(partyA.previousPollPercentResult || 0),
 		);
-
-	let totalPreviousPollStanding = 0;
-	let totalPreviousDPRSeats = 0;
-	for (let { previousPollPercentResult, previousDPRSeats } of partiesData) {
-		totalPreviousPollStanding += previousPollPercentResult || 0;
-		totalPreviousDPRSeats += previousDPRSeats || 0;
-	}
 
 	return (
 		<div className="flex flex-col gap-4">
