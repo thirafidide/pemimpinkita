@@ -76,7 +76,15 @@ export default function Home() {
 						}}
 						coalition={{
 							name: 'Koalisi Indonesia Maju',
-							member: ['GERINDRA', 'GOLKAR', 'PAN', 'PBB', 'GARUDA', 'GELORA'],
+							member: [
+								'GERINDRA',
+								'GOLKAR',
+								'DEMOKRAT',
+								'PAN',
+								'PBB',
+								'GARUDA',
+								'GELORA',
+							],
 						}}
 					/>
 
@@ -116,9 +124,7 @@ export default function Home() {
 					/>
 				</div>
 
-				<PartiesNotInCoalitionSection
-					parties={['DEMOKRAT', 'PSI', 'PKN', 'BURUH']}
-				/>
+				<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
 			</main>
 		</div>
 	);
