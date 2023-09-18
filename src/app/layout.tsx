@@ -24,7 +24,7 @@ export default function RootLayout({
 			<body
 				className={cn(
 					inter.className,
-					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 pt-20',
+					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24',
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
