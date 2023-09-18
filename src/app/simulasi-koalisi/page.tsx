@@ -12,7 +12,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 export default function CoalitionSimulation() {
 	const [prabowoCoalitionMember, setPrabowoCoalitionMember] = useState<
 		PoliticalPartyId[]
-	>(['GERINDRA', 'GOLKAR', 'PAN', 'PBB', 'GARUDA', 'GELORA']);
+	>(['GERINDRA', 'GOLKAR', 'DEMOKRAT', 'PAN', 'PBB', 'GARUDA', 'GELORA']);
 	const [aniesCoalitionMember, setAniesCoalitionMember] = useState<
 		PoliticalPartyId[]
 	>(['NASDEM', 'PKB', 'PKS', 'UMMAT']);
@@ -21,7 +21,7 @@ export default function CoalitionSimulation() {
 	>(['PDIP', 'PPP', 'HANURA', 'PERINDO']);
 	const [nonCoalitionMember, setNonCoalitionMember] = useState<
 		PoliticalPartyId[]
-	>(['DEMOKRAT', 'PSI', 'PKN', 'BURUH']);
+	>(['PSI', 'PKN', 'BURUH']);
 
 	function addToCoalition(
 		coalitionSetter: Dispatch<SetStateAction<PoliticalPartyId[]>>,
