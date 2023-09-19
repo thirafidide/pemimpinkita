@@ -6,7 +6,13 @@ import {
 	PoliticalPartyId,
 	politicalPartyData,
 } from '@/political-party/PoliticalParty';
-import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
+import {
+	DndContext,
+	DragEndEvent,
+	DragOverlay,
+	DragStartEvent,
+} from '@dnd-kit/core';
 import { Dispatch, SetStateAction, useState } from 'react';
 
 export default function CoalitionSimulation() {
@@ -22,6 +28,9 @@ export default function CoalitionSimulation() {
 	const [nonCoalitionMember, setNonCoalitionMember] = useState<
 		PoliticalPartyId[]
 	>(['PSI', 'PKN', 'BURUH']);
+	const [draggedParty, setDraggedParty] = useState<PoliticalPartyId | null>(
+		null,
+	);
 
 	function addToCoalition(
 		coalitionSetter: Dispatch<SetStateAction<PoliticalPartyId[]>>,
@@ -45,9 +54,18 @@ export default function CoalitionSimulation() {
 		);
 	}
 
+	function handleDragStart(event: DragStartEvent) {
+		const { active } = event;
+		const party = active.id as PoliticalPartyId;
+
+		setDraggedParty(party);
+	}
+
 	function handleDragEnd(event: DragEndEvent) {
 		const { active, over } = event;
 		const party = active.id as PoliticalPartyId;
+
+		setDraggedParty(null);
 
 		switch (over?.id) {
 			case 'prabowo-coalition':
@@ -100,7 +118,7 @@ export default function CoalitionSimulation() {
 				</div>
 			</div>
 
-			<DndContext onDragEnd={handleDragEnd}>
+			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					<CoalitionSimulationCard
 						presidentialCandidate={{
@@ -147,6 +165,10 @@ export default function CoalitionSimulation() {
 				</div>
 
 				<PartiesNotInCoalitionSection parties={nonCoalitionMember} />
+
+				<DragOverlay>
+					{draggedParty ? <PoliticalPartyChip party={draggedParty} /> : null}
+				</DragOverlay>
 			</DndContext>
 		</main>
 	);
