@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 
 export function Topbar() {
 	return (
-		<header className="flex">
+		<header className="flex container p-0">
 			<Button
 				variant="link"
 				className="rounded-none bg-foreground px-4 py-2 -ml-4 text-background scroll-m-20 text-xl font-extrabold tracking-tight"
