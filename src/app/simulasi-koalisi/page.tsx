@@ -110,10 +110,14 @@ export default function CoalitionSimulation() {
 						Saat ini sebagian bakal capres masih belum menentukan pasangan
 						cawapresnya, dan partai-partai politik masih saling tarik-menarik
 						untuk membentuk koalisi untuk mendukung pasangan capres-cawapres
-						masing-masing. Bagaimana kalau Ganjar yang berhasil menarik Demokrat
-						ke koalisinya? Apa jadinya jika Golkar pindah haluan ke koalisi
-						Anies atau Ganjar? Simulasikan hal tersebut di sini dan lihat
-						potensial perubahan suara dan kekuatan koalisi secara keseluruhan.
+						masing-masing.
+					</p>
+
+					<p>
+						Bagaimana kalau Ganjar yang berhasil menarik Demokrat ke koalisinya?
+						Apa jadinya jika Golkar pindah haluan ke koalisi Anies atau Ganjar?
+						Simulasikan hal tersebut di sini dan lihat potensial perubahan suara
+						dan kekuatan koalisi secara keseluruhan.
 					</p>
 				</div>
 			</div>
