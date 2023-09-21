@@ -8,6 +8,10 @@ import {
 import { useDroppable } from '@dnd-kit/core';
 import { DraggablePoliticalPartyChip } from './DraggablePoliticalPartyChip';
 
+const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
+const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
+const TOTAL_DPR_SEATS = 575;
+
 const percentageFormatter = new Intl.NumberFormat('id-ID', {
 	maximumFractionDigits: 2,
 	style: 'percent',
@@ -52,6 +56,17 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 		totalPreviousDPRSeats += previousDPRSeats || 0;
 	}
 
+	const isAbovePresidentialTresholdWithDPRSeats =
+		(totalPreviousDPRSeats / TOTAL_DPR_SEATS) * 100 >=
+		PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT;
+
+	const isAbovePresidentialTresholdWithDPRVote =
+		totalPreviousPollStanding >= PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT;
+
+	const isAbovePresidentialTreshold =
+		isAbovePresidentialTresholdWithDPRSeats ||
+		isAbovePresidentialTresholdWithDPRVote;
+
 	const warningStripeStyle = {
 		borderImage: `repeating-linear-gradient(
 				45deg,
@@ -92,7 +107,11 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 					</VicePresidentialCandidateName>
 				</div>
 
-				<p className="flex text-xs flex-col gap-1">
+				<p
+					className={cn('flex text-xs flex-col gap-1', {
+						'text-destructive': !isAbovePresidentialTreshold,
+					})}
+				>
 					<span className="text-3xl font-extralight">
 						{percentageFormatter.format(totalPreviousPollStanding / 100)}
 					</span>
@@ -102,7 +121,11 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 				</p>
 
 				<section className="flex flex-col gap-3">
-					<div>
+					<div
+						className={cn({
+							'text-destructive': !isAbovePresidentialTreshold,
+						})}
+					>
 						<p className="scroll-m-20 font-semibold tracking-tight">
 							Koalisi Simulasi
 						</p>
