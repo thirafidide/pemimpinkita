@@ -7,6 +7,10 @@ import {
 } from '@/political-party/PoliticalParty';
 import { useDroppable } from '@dnd-kit/core';
 import { DraggablePoliticalPartyChip } from './DraggablePoliticalPartyChip';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
+import { AlertCircle } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
@@ -136,6 +140,31 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 							/ 575 Kursi DPR RI (2019 - 2024)
 						</p>
 					</div>
+
+					{!isAbovePresidentialTreshold && (
+						<Alert variant="destructive">
+							<AlertCircle className="h-4 w-4" />
+							<AlertTitle>Tidak lolos persyaratan</AlertTitle>
+							<AlertDescription>
+								Sesuai{' '}
+								<Button
+									className="p-0 italic h-auto text-destructive"
+									variant="link"
+									asChild
+								>
+									<Link
+										href="https://peraturan.bpk.go.id/Details/37644/uu-no-7-tahun-2017"
+										target="_blank"
+									>
+										Pasal 222 UU Pemilu
+									</Link>
+								</Button>
+								, Koalisi pengusung harus melewati ambang batas 20% jumlah kursi
+								di DPR atau memperoleh 25% dari suara nasional pada pemilu DPR
+								periode sebelumnya.
+							</AlertDescription>
+						</Alert>
+					)}
 
 					<p className="text-sm">
 						Tekan dan seret partai di bawah ini dan taruh di koalisi yang anda
