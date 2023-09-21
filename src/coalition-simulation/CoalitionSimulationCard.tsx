@@ -142,7 +142,7 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 					</div>
 
 					{!isAbovePresidentialTreshold && (
-						<Alert variant="destructive">
+						<Alert variant="destructive" className="p-3">
 							<AlertCircle className="h-4 w-4" />
 							<AlertTitle>Tidak lolos persyaratan</AlertTitle>
 							<AlertDescription>
