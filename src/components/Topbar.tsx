@@ -14,6 +14,12 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+const navigations: Array<{ linkText: string; href: string }> = [
+	{ linkText: 'Pilpres 2024', href: '/' },
+	{ linkText: 'Simulasi Koalisi', href: '/simulasi-koalisi' },
+	{ linkText: 'Disclaimer', href: '/disclaimer' },
+];
+
 export function Topbar() {
 	return (
 		<header className="flex container p-0">
@@ -28,13 +34,11 @@ export function Topbar() {
 			<div className="flex-1" />
 
 			<nav className="hidden sm:flex">
-				<Button variant="link" asChild>
-					<Link href="/">Pilpres 2024</Link>
-				</Button>
-
-				<Button variant="link" asChild>
-					<Link href="/simulasi-koalisi">Simulasi Koalisi</Link>
-				</Button>
+				{navigations.map(({ linkText, href }) => (
+					<Button key={href} variant="link" asChild>
+						<Link href={href}>{linkText}</Link>
+					</Button>
+				))}
 
 				<Button variant="link" size="icon" asChild>
 					<Link
@@ -73,17 +77,13 @@ function MobileNavigationSheet() {
 				</SheetHeader>
 
 				<nav className="flex flex-col gap-2 pt-6">
-					<Button className="justify-start" variant="link" asChild>
-						<MobileLink onOpenChange={setOpen} href="/">
-							Pilpres 2024
-						</MobileLink>
-					</Button>
-
-					<Button className="justify-start" variant="link" asChild>
-						<MobileLink onOpenChange={setOpen} href="/simulasi-koalisi">
-							Simulasi Koalisi
-						</MobileLink>
-					</Button>
+					{navigations.map(({ linkText, href }) => (
+						<Button key={href} className="justify-start" variant="link" asChild>
+							<MobileLink onOpenChange={setOpen} href={href}>
+								{linkText}
+							</MobileLink>
+						</Button>
+					))}
 
 					<div className="flex gap-2">
 						<Button variant="link" size="icon" asChild>
