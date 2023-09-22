@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import {
 	PoliticalPartyId,
 	politicalPartyData,
 } from '@/political-party/PoliticalParty';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
+import { CandidatePhoto } from './CandidatePhoto';
 
 const percentageFormatter = new Intl.NumberFormat('id-ID', {
 	maximumFractionDigits: 2,
@@ -118,18 +118,5 @@ function VicePresidentialCandidateName(props: { children?: ReactNode }) {
 		>
 			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
 		</h2>
-	);
-}
-
-function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
-	return (
-		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image
-			className="w-28 h-36 object-cover rounded-md"
-			priority
-			width={112}
-			height={144}
-			{...props}
-		/>
 	);
 }

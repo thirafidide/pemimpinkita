@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import {
 	PoliticalPartyId,
 	politicalPartyData,
@@ -11,6 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
 import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
 
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
@@ -209,18 +209,5 @@ function VicePresidentialCandidateName(props: { children?: ReactNode }) {
 		>
 			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
 		</h2>
-	);
-}
-
-function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
-	return (
-		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image
-			className="w-28 h-36 object-cover rounded-md"
-			priority
-			width={112}
-			height={144}
-			{...props}
-		/>
 	);
 }
