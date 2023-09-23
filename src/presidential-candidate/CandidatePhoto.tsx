@@ -10,7 +10,7 @@ export interface CandidatePhotoProps
 	showParty?: boolean;
 }
 export function CandidatePhoto(props: CandidatePhotoProps) {
-	const { partyId, showParty = true, ...imageProps } = props;
+	const { partyId, showParty, ...imageProps } = props;
 
 	const party = partyId ? politicalPartyData[partyId] : null;
 
