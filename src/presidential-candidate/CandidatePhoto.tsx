@@ -1,5 +1,6 @@
 import {
 	PoliticalPartyId,
+	getPartyDescriptiveName,
 	politicalPartyData,
 } from '@/political-party/PoliticalParty';
 import Image from 'next/image';
@@ -13,11 +14,6 @@ export function CandidatePhoto(props: CandidatePhotoProps) {
 	const { partyId, showParty, ...imageProps } = props;
 
 	const party = partyId ? politicalPartyData[partyId] : null;
-
-	const showShortName =
-		party &&
-		party.name.toLowerCase() !==
-			party.fullName.toLowerCase().replace(' ', '').replace('partai', '');
 
 	const logoHeight = 16;
 	const logoWidth = party
@@ -41,9 +37,7 @@ export function CandidatePhoto(props: CandidatePhotoProps) {
 						<Image
 							className="h-4 w-auto oject-scale-down"
 							src={party.logo.src}
-							alt={`Logo ${party.fullName} ${
-								showShortName ? `(${party.name})` : ''
-							}`}
+							alt={`Logo ${party.fullName} ${getPartyDescriptiveName(party)}`}
 							width={logoWidth}
 							height={logoHeight}
 						/>
