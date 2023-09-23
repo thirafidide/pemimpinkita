@@ -11,6 +11,7 @@ import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
+import { CandidatePicker } from './CandidatePicker';
 
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
@@ -102,12 +103,14 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 						partyId={props.presidentialCandidate.partyId}
 						showParty
 					/>
-					{props.vicePresidentialCandidate && (
+					{props.vicePresidentialCandidate ? (
 						<CandidatePhoto
 							{...props.vicePresidentialCandidate.photo}
 							partyId={props.vicePresidentialCandidate.partyId}
 							showParty
 						/>
+					) : (
+						<CandidatePicker />
 					)}
 				</div>
 
