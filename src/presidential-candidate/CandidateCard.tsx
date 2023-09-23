@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import {
 	PoliticalPartyId,
 	politicalPartyData,
 } from '@/political-party/PoliticalParty';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
+import { CandidatePhoto } from './CandidatePhoto';
 
 const percentageFormatter = new Intl.NumberFormat('id-ID', {
 	maximumFractionDigits: 2,
@@ -20,6 +20,7 @@ export interface CandidateCardProps {
 			src: string;
 			alt: string;
 		};
+		partyId?: PoliticalPartyId;
 	};
 	vicePresidentialCandidate?: {
 		name: string;
@@ -27,6 +28,7 @@ export interface CandidateCardProps {
 			src: string;
 			alt: string;
 		};
+		partyId?: PoliticalPartyId;
 	};
 	coalition: {
 		name: string;
@@ -49,9 +51,17 @@ export function CandidateCard(props: CandidateCardProps) {
 	return (
 		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			<div className="flex gap-2">
-				<CandidatePhoto {...props.presidentialCandidate.photo} />
+				<CandidatePhoto
+					{...props.presidentialCandidate.photo}
+					partyId={props.presidentialCandidate.partyId}
+					showParty
+				/>
 				{props.vicePresidentialCandidate && (
-					<CandidatePhoto {...props.vicePresidentialCandidate.photo} />
+					<CandidatePhoto
+						{...props.vicePresidentialCandidate.photo}
+						partyId={props.vicePresidentialCandidate.partyId}
+						showParty
+					/>
 				)}
 			</div>
 
@@ -118,18 +128,5 @@ function VicePresidentialCandidateName(props: { children?: ReactNode }) {
 		>
 			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
 		</h2>
-	);
-}
-
-function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
-	return (
-		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image
-			className="w-28 h-36 object-cover rounded-md"
-			priority
-			width={112}
-			height={144}
-			{...props}
-		/>
 	);
 }

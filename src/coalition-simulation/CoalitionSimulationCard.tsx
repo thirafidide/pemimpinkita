@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import {
 	PoliticalPartyId,
 	politicalPartyData,
@@ -11,6 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
 import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
 
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
@@ -24,6 +24,7 @@ const percentageFormatter = new Intl.NumberFormat('id-ID', {
 export interface CoalitionSimulationCardProps {
 	presidentialCandidate: {
 		name: string;
+		partyId?: PoliticalPartyId;
 		photo: {
 			src: string;
 			alt: string;
@@ -31,6 +32,7 @@ export interface CoalitionSimulationCardProps {
 	};
 	vicePresidentialCandidate?: {
 		name: string;
+		partyId?: PoliticalPartyId;
 		photo: {
 			src: string;
 			alt: string;
@@ -95,9 +97,17 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 				style={warningStripeStyle}
 			>
 				<div className="flex gap-2">
-					<CandidatePhoto {...props.presidentialCandidate.photo} />
+					<CandidatePhoto
+						{...props.presidentialCandidate.photo}
+						partyId={props.presidentialCandidate.partyId}
+						showParty
+					/>
 					{props.vicePresidentialCandidate && (
-						<CandidatePhoto {...props.vicePresidentialCandidate.photo} />
+						<CandidatePhoto
+							{...props.vicePresidentialCandidate.photo}
+							partyId={props.vicePresidentialCandidate.partyId}
+							showParty
+						/>
 					)}
 				</div>
 
@@ -209,18 +219,5 @@ function VicePresidentialCandidateName(props: { children?: ReactNode }) {
 		>
 			{props.children ? `& ${props.children}` : 'Belum menentukan Cawapres'}
 		</h2>
-	);
-}
-
-function CandidatePhoto(props: React.ComponentProps<typeof Image>) {
-	return (
-		// eslint-disable-next-line jsx-a11y/alt-text
-		<Image
-			className="w-28 h-36 object-cover rounded-md"
-			priority
-			width={112}
-			height={144}
-			{...props}
-		/>
 	);
 }

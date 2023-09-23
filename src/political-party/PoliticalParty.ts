@@ -32,6 +32,24 @@ export interface PoliticalParty {
 	newPartyIn2024?: boolean;
 }
 
+export function shouldShowShortName(party: PoliticalParty) {
+	return (
+		party.name.toLowerCase() !==
+		party.fullName.toLowerCase().replace(' ', '').replace('partai', '')
+	);
+}
+
+/**
+ * Get party full name and includes the short name in parenthesis if needed
+ *
+ * @param party Political party
+ */
+export function getPartyDescriptiveName(party: PoliticalParty) {
+	return `${party.fullName} ${
+		shouldShowShortName(party) ? `(${party.name})` : ''
+	}`;
+}
+
 export const politicalPartyData: Record<PoliticalPartyId, PoliticalParty> = {
 	PKB: {
 		partyId: 'PKB',
