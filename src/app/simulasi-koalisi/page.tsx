@@ -127,6 +127,7 @@ export default function CoalitionSimulation() {
 					<CoalitionSimulationCard
 						presidentialCandidate={{
 							name: 'Prabowo Subianto',
+							partyId: 'GERINDRA',
 							photo: {
 								src: '/foto-kandidat/Prabowo_Subianto.jpg',
 								alt: 'Potret Resmi Prabowo Subianto sebagai Mentri Pertahanan Republik Indonesia Periode 2019-Sekarang',
@@ -146,6 +147,7 @@ export default function CoalitionSimulation() {
 						}}
 						vicePresidentialCandidate={{
 							name: 'Muhaimin Iskandar',
+							partyId: 'PKB',
 							photo: {
 								src: '/foto-kandidat/Muhaimin_Iskandar.jpg',
 								alt: 'Potret Resmi Muhaimin Iskandar sebagai Wakil Ketua DPR Republik Indonesia Periode 2019-Sekarang',
@@ -158,6 +160,7 @@ export default function CoalitionSimulation() {
 					<CoalitionSimulationCard
 						presidentialCandidate={{
 							name: 'Ganjar Pranowo',
+							partyId: 'PDIP',
 							photo: {
 								src: '/foto-kandidat/Ganjar_Pranowo.jpg',
 								alt: 'Potret Resmi Ganjar Pranowo sebagai Gubernur Jawa Tengah Periode 2018-2023',

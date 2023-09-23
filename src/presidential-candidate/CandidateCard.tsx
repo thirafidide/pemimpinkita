@@ -54,11 +54,13 @@ export function CandidateCard(props: CandidateCardProps) {
 				<CandidatePhoto
 					{...props.presidentialCandidate.photo}
 					partyId={props.presidentialCandidate.partyId}
+					showParty
 				/>
 				{props.vicePresidentialCandidate && (
 					<CandidatePhoto
 						{...props.vicePresidentialCandidate.photo}
 						partyId={props.vicePresidentialCandidate.partyId}
+						showParty
 					/>
 				)}
 			</div>

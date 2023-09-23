@@ -24,6 +24,7 @@ const percentageFormatter = new Intl.NumberFormat('id-ID', {
 export interface CoalitionSimulationCardProps {
 	presidentialCandidate: {
 		name: string;
+		partyId?: PoliticalPartyId;
 		photo: {
 			src: string;
 			alt: string;
@@ -31,6 +32,7 @@ export interface CoalitionSimulationCardProps {
 	};
 	vicePresidentialCandidate?: {
 		name: string;
+		partyId?: PoliticalPartyId;
 		photo: {
 			src: string;
 			alt: string;
@@ -95,9 +97,17 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 				style={warningStripeStyle}
 			>
 				<div className="flex gap-2">
-					<CandidatePhoto {...props.presidentialCandidate.photo} />
+					<CandidatePhoto
+						{...props.presidentialCandidate.photo}
+						partyId={props.presidentialCandidate.partyId}
+						showParty
+					/>
 					{props.vicePresidentialCandidate && (
-						<CandidatePhoto {...props.vicePresidentialCandidate.photo} />
+						<CandidatePhoto
+							{...props.vicePresidentialCandidate.photo}
+							partyId={props.vicePresidentialCandidate.partyId}
+							showParty
+						/>
 					)}
 				</div>
 
