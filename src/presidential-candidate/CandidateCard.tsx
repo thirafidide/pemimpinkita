@@ -20,6 +20,7 @@ export interface CandidateCardProps {
 			src: string;
 			alt: string;
 		};
+		partyId?: PoliticalPartyId;
 	};
 	vicePresidentialCandidate?: {
 		name: string;
@@ -27,6 +28,7 @@ export interface CandidateCardProps {
 			src: string;
 			alt: string;
 		};
+		partyId?: PoliticalPartyId;
 	};
 	coalition: {
 		name: string;
@@ -49,9 +51,15 @@ export function CandidateCard(props: CandidateCardProps) {
 	return (
 		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			<div className="flex gap-2">
-				<CandidatePhoto {...props.presidentialCandidate.photo} />
+				<CandidatePhoto
+					{...props.presidentialCandidate.photo}
+					partyId={props.presidentialCandidate.partyId}
+				/>
 				{props.vicePresidentialCandidate && (
-					<CandidatePhoto {...props.vicePresidentialCandidate.photo} />
+					<CandidatePhoto
+						{...props.vicePresidentialCandidate.photo}
+						partyId={props.vicePresidentialCandidate.partyId}
+					/>
 				)}
 			</div>
 
