@@ -75,7 +75,7 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		candidateId: 'AHY',
 		name: 'Agus Harimurti Yudhoyono',
 		shortName: 'AHY',
-		partyId: 'GOLKAR',
+		partyId: 'DEMOKRAT',
 		photo: {
 			src: '/foto-kandidat/Agus_Harimurti_Yudhoyono.jpg',
 			alt: 'Potret Agus Harimurti Yudhoyono sebagai Ketua Umum Partai Demokrat 2020-Sekarang',
