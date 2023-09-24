@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
@@ -17,17 +17,20 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/Popover';
+import { candidateData } from '@/presidential-candidate/candidateData';
+import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
 
-const candidates = [
-	{
-		value: 'ridwankamil',
-		label: 'Ridwan Kamil',
-	},
-];
+const potentialCandidateData = Object.values(candidateData).filter(
+	({ confirmedRunning }) => !confirmedRunning,
+);
 
 export function CandidatePicker() {
 	const [open, setOpen] = React.useState(false);
 	const [value, setValue] = React.useState('');
+
+	const selectedCandidate = potentialCandidateData.find(
+		({ candidateId }) => candidateId === value,
+	);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -36,11 +39,24 @@ export function CandidatePicker() {
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className="w-28 h-36 justify-between"
+					className="relative w-28 h-36 justify-between border-dashed border-2 p-0 overflow-hidden border-yellow-400"
 				>
-					{value
-						? candidates.find((candidate) => candidate.value === value)?.label
-						: 'Pilih Cawapres'}
+					{selectedCandidate && (
+						<div className="absolute top-0 left-0 hover:opacity-10">
+							<CandidatePhoto
+								partyId={
+									selectedCandidate.partyId !== 'INDEPENDENT'
+										? selectedCandidate.partyId
+										: undefined
+								}
+								src={selectedCandidate.photo.src}
+								alt={selectedCandidate.photo.alt}
+								showParty
+							/>
+						</div>
+					)}
+
+					<p className="p-2">Pilih Cawapres</p>
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-[200px] p-0">
@@ -48,22 +64,25 @@ export function CandidatePicker() {
 					<CommandInput placeholder="Cari tokoh" />
 					<CommandEmpty>Tokoh tidak ditemukan</CommandEmpty>
 					<CommandGroup>
-						{candidates.map((candidate) => (
+						{potentialCandidateData.map((candidate) => (
 							<CommandItem
-								key={candidate.value}
-								value={candidate.value}
+								key={candidate.candidateId}
+								value={candidate.candidateId}
 								onSelect={(currentValue) => {
-									setValue(currentValue === value ? '' : currentValue);
+									// Looks like CMDK lowercased the value for some reason
+									setValue(currentValue.toUpperCase());
 									setOpen(false);
 								}}
 							>
 								<Check
 									className={cn(
 										'mr-2 h-4 w-4',
-										value === candidate.value ? 'opacity-100' : 'opacity-0',
+										value === candidate.candidateId
+											? 'opacity-100'
+											: 'opacity-0',
 									)}
 								/>
-								{candidate.label}
+								{candidate.name}
 							</CommandItem>
 						))}
 					</CommandGroup>
