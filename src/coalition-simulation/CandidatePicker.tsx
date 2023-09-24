@@ -64,6 +64,16 @@ export function CandidatePicker() {
 					<CommandInput placeholder="Cari tokoh" />
 					<CommandEmpty>Tokoh tidak ditemukan</CommandEmpty>
 					<CommandGroup>
+						<CommandItem
+							value="NULL"
+							onSelect={() => {
+								setValue('');
+								setOpen(false);
+							}}
+						>
+							Tanpa Cawapres
+						</CommandItem>
+
 						{potentialCandidateData.map((candidate) => (
 							<CommandItem
 								key={candidate.candidateId}
