@@ -1,9 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { Check } from 'lucide-react';
-
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import {
 	Command,
@@ -39,7 +36,7 @@ export function CandidatePicker() {
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className="relative w-28 h-36 justify-between border-dashed border-2 p-0 overflow-hidden border-yellow-400"
+					className="relative w-28 h-36 justify-between border-none outline-dashed outline-2 p-0 overflow-hidden outline-yellow-400"
 				>
 					{selectedCandidate && (
 						<div className="absolute top-0 left-0 hover:opacity-10">
