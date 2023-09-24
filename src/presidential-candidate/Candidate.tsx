@@ -3,7 +3,7 @@ import { PoliticalPartyId } from '@/political-party/PoliticalParty';
 export interface Candidate {
 	candidateId: CandidateId;
 	name: string;
-	shortName: string;
+	shortName?: string;
 	partyId: PoliticalPartyId | 'INDEPENDENT';
 	photo: {
 		src: string;
@@ -22,4 +22,11 @@ export type CandidateId =
 	// confirmed vice presidential candidate
 	| 'IMIN'
 	// potential candidate
-	| 'RIDWANKAMIL';
+	| 'RIDWANKAMIL'
+	| 'AHY'
+	| 'UNO'
+	| 'ERICKTHOHIR'
+	| 'GIRING'
+	| 'GIBRAN'
+	| 'PUAN'
+	| 'MAHFUDMD';

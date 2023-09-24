@@ -59,7 +59,7 @@ export function CandidatePicker() {
 					<p className="p-2">Pilih Cawapres</p>
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-[200px] p-0">
+			<PopoverContent className="w-[300px] p-0">
 				<Command>
 					<CommandInput placeholder="Cari tokoh" />
 					<CommandEmpty>Tokoh tidak ditemukan</CommandEmpty>
@@ -74,14 +74,6 @@ export function CandidatePicker() {
 									setOpen(false);
 								}}
 							>
-								<Check
-									className={cn(
-										'mr-2 h-4 w-4',
-										value === candidate.candidateId
-											? 'opacity-100'
-											: 'opacity-0',
-									)}
-								/>
 								{candidate.name}
 							</CommandItem>
 						))}
