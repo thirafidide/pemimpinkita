@@ -167,4 +167,60 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		},
 		confirmedRunning: false,
 	},
+
+	SUSI: {
+		candidateId: 'SUSI',
+		name: 'Susi Pudjiastuti',
+		shortName: 'Susi',
+		partyId: 'INDEPENDENT',
+		photo: {
+			src: '/foto-kandidat/Susi_Pudjiastuti.jpg',
+			alt: 'Potret Susi Pudjiastuti sebagai Menteri Kelautan dan Perikanan Indonesia 2014-2019',
+			width: 2424,
+			height: 3233,
+		},
+		confirmedRunning: false,
+	},
+
+	ZULHAS: {
+		candidateId: 'ZULHAS',
+		name: 'Zulkifli Hasan',
+		shortName: 'Zulhas',
+		partyId: 'PAN',
+		photo: {
+			src: '/foto-kandidat/Zulkifli_Hasan.jpg',
+			alt: 'Potret Zulkifli Hasan sebagai Menteri Perdagangan Indonesia 2022-Sekarang',
+			width: 1503,
+			height: 2016,
+		},
+		confirmedRunning: false,
+	},
+
+	YUSRIL: {
+		candidateId: 'YUSRIL',
+		name: 'Yusril Ihza Mahendra',
+		shortName: 'Yusril',
+		partyId: 'PBB',
+		photo: {
+			src: '/foto-kandidat/Yusril_Ihza_Mahendra.jpg',
+			alt: 'Potret Yusril Ihza Mahendra',
+			width: 401,
+			height: 550,
+		},
+		confirmedRunning: false,
+	},
+
+	JOKOWI: {
+		candidateId: 'JOKOWI',
+		name: 'Joko Widodo',
+		shortName: 'Jokowi',
+		partyId: 'PDIP',
+		photo: {
+			src: '/foto-kandidat/Joko_Widodo.jpg',
+			alt: 'Potret Joko Widodo sebagai Presiden Republik Indonesia 2019-Sekarang',
+			width: 4364,
+			height: 5246,
+		},
+		confirmedRunning: false,
+	},
 };

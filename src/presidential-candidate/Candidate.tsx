@@ -29,4 +29,8 @@ export type CandidateId =
 	| 'GIRING'
 	| 'GIBRAN'
 	| 'PUAN'
-	| 'MAHFUDMD';
+	| 'MAHFUDMD'
+	| 'SUSI'
+	| 'ZULHAS'
+	| 'YUSRIL'
+	| 'JOKOWI';
