@@ -23,9 +23,31 @@ import {
 } from '@/political-party/PoliticalParty';
 import { CandidateId } from '@/presidential-candidate/Candidate';
 
-const potentialCandidateData = Object.values(candidateData).filter(
-	({ confirmedRunning }) => !confirmedRunning,
-);
+const potentialCandidateData = Object.values(candidateData)
+	.filter(({ confirmedRunning }) => !confirmedRunning)
+	.toSorted((candidateA, candidateB) => {
+		const candidateAPartyName =
+			candidateA.partyId !== 'INDEPENDENT' &&
+			politicalPartyData[candidateA.partyId].name;
+		const candidateBPartyName =
+			candidateB.partyId !== 'INDEPENDENT' &&
+			politicalPartyData[candidateB.partyId].name;
+
+		let partyNameCompare = 0;
+		if (candidateAPartyName && candidateBPartyName) {
+			partyNameCompare = candidateAPartyName.localeCompare(candidateBPartyName);
+		} else if (candidateAPartyName) {
+			partyNameCompare = -1;
+		} else if (candidateBPartyName) {
+			partyNameCompare = 1;
+		}
+
+		if (partyNameCompare !== 0) {
+			return partyNameCompare;
+		}
+
+		return candidateA.name.localeCompare(candidateB.name);
+	});
 
 export interface CandidatePickerProps {
 	value: CandidateId | null;
