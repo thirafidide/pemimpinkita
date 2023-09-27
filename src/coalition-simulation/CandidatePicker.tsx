@@ -27,11 +27,9 @@ const potentialCandidateData = Object.values(candidateData)
 	.filter(({ confirmedRunning }) => !confirmedRunning)
 	.toSorted((candidateA, candidateB) => {
 		const candidateAPartyName =
-			candidateA.partyId !== 'INDEPENDENT' &&
-			politicalPartyData[candidateA.partyId].name;
+			candidateA.partyId && politicalPartyData[candidateA.partyId].name;
 		const candidateBPartyName =
-			candidateB.partyId !== 'INDEPENDENT' &&
-			politicalPartyData[candidateB.partyId].name;
+			candidateB.partyId && politicalPartyData[candidateB.partyId].name;
 
 		let partyNameCompare = 0;
 		if (candidateAPartyName && candidateBPartyName) {
@@ -74,11 +72,7 @@ export function CandidatePicker(props: CandidatePickerProps) {
 					{selectedCandidate && (
 						<div className="absolute top-0 left-0 hover:opacity-10">
 							<CandidatePhoto
-								partyId={
-									selectedCandidate.partyId !== 'INDEPENDENT'
-										? selectedCandidate.partyId
-										: undefined
-								}
+								partyId={selectedCandidate.partyId}
 								src={selectedCandidate.photo.src}
 								alt={selectedCandidate.photo.alt}
 								showParty
@@ -106,9 +100,7 @@ export function CandidatePicker(props: CandidatePickerProps) {
 
 						{potentialCandidateData.map((candidate) => {
 							const party =
-								candidate.partyId !== 'INDEPENDENT'
-									? politicalPartyData[candidate.partyId]
-									: null;
+								candidate.partyId && politicalPartyData[candidate.partyId];
 
 							const logoHeight = 16;
 							const logoWidth = party

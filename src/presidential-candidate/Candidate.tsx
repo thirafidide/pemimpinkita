@@ -4,7 +4,7 @@ export interface Candidate {
 	candidateId: CandidateId;
 	name: string;
 	shortName?: string;
-	partyId: PoliticalPartyId | 'INDEPENDENT';
+	partyId?: PoliticalPartyId;
 	photo: {
 		src: string;
 		width: number;

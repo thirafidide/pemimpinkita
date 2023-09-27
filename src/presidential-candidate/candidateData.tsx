@@ -19,7 +19,6 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		candidateId: 'ANIES',
 		name: 'Anies Baswedan',
 		shortName: 'Anies',
-		partyId: 'INDEPENDENT',
 		photo: {
 			src: '/foto-kandidat/Anies_Baswedan.jpg',
 			alt: 'Potret Resmi Anies Baswedan sebagai Gubernur DKI Jakarta Periode 2017-2022',
@@ -102,7 +101,6 @@ export const candidateData: Record<CandidateId, Candidate> = {
 	ERICKTHOHIR: {
 		candidateId: 'ERICKTHOHIR',
 		name: 'Erick Thohir',
-		partyId: 'INDEPENDENT',
 		photo: {
 			src: '/foto-kandidat/Erick_Thohir.jpg',
 			alt: 'Potret Erick Thohir sebagai Mentri BUMN 2020-Sekarang',
@@ -158,7 +156,6 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		candidateId: 'MAHFUDMD',
 		name: 'Mohammad Mahfud Mahmodin',
 		shortName: 'Mahfud MD',
-		partyId: 'INDEPENDENT',
 		photo: {
 			src: '/foto-kandidat/Mahfud_MD.jpg',
 			alt: 'Potret Mahfud MD sebagai Menteri Koordinator Politik, Hukum, dan Keamanan Indonesia 2019-Sekarang',
@@ -172,7 +169,6 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		candidateId: 'SUSI',
 		name: 'Susi Pudjiastuti',
 		shortName: 'Susi',
-		partyId: 'INDEPENDENT',
 		photo: {
 			src: '/foto-kandidat/Susi_Pudjiastuti.jpg',
 			alt: 'Potret Susi Pudjiastuti sebagai Menteri Kelautan dan Perikanan Indonesia 2014-2019',
