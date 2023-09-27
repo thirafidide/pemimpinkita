@@ -16,6 +16,11 @@ import {
 } from '@/components/ui/Popover';
 import { candidateData } from '@/presidential-candidate/candidateData';
 import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
+import Image from 'next/image';
+import {
+	getPartyDescriptiveName,
+	politicalPartyData,
+} from '@/political-party/PoliticalParty';
 
 const potentialCandidateData = Object.values(candidateData).filter(
 	({ confirmedRunning }) => !confirmedRunning,
@@ -71,19 +76,42 @@ export function CandidatePicker() {
 							Tanpa Cawapres
 						</CommandItem>
 
-						{potentialCandidateData.map((candidate) => (
-							<CommandItem
-								key={candidate.candidateId}
-								value={candidate.candidateId}
-								onSelect={(currentValue) => {
-									// Looks like CMDK lowercased the value for some reason
-									setValue(currentValue.toUpperCase());
-									setOpen(false);
-								}}
-							>
-								{candidate.name}
-							</CommandItem>
-						))}
+						{potentialCandidateData.map((candidate) => {
+							const party =
+								candidate.partyId !== 'INDEPENDENT'
+									? politicalPartyData[candidate.partyId]
+									: null;
+
+							const logoHeight = 16;
+							const logoWidth = party
+								? (logoHeight * party.logo.width) / party.logo.height
+								: 0;
+
+							return (
+								<CommandItem
+									key={candidate.candidateId}
+									value={candidate.candidateId}
+									onSelect={(currentValue) => {
+										// Looks like CMDK lowercased the value for some reason
+										setValue(currentValue.toUpperCase());
+										setOpen(false);
+									}}
+									className="flex justify-between"
+								>
+									{candidate.name}
+
+									{party && (
+										<Image
+											className="h-4 w-auto pr-2 object-scale-down"
+											src={party.logo.src}
+											alt={`Logo ${getPartyDescriptiveName(party)}`}
+											width={logoWidth}
+											height={logoHeight}
+										/>
+									)}
+								</CommandItem>
+							);
+						})}
 					</CommandGroup>
 				</Command>
 			</PopoverContent>
