@@ -219,4 +219,46 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		},
 		confirmedRunning: false,
 	},
+
+	KHOFIFAH: {
+		candidateId: 'KHOFIFAH',
+		name: 'Khofifah Indar Parawansa',
+		shortName: 'Khofifah',
+		partyId: 'PKB',
+		photo: {
+			src: '/foto-kandidat/Khofifah_Indar_Parawansa.jpg',
+			alt: 'Potret Khofifah Indar Parawansa sebagai Gubernur Jawa Timur 2019-Sekarang',
+			width: 345,
+			height: 475,
+		},
+		confirmedRunning: false,
+	},
+
+	AIRLANGGA: {
+		candidateId: 'AIRLANGGA',
+		name: 'Airlangga Hartarto',
+		shortName: 'Airlangga',
+		partyId: 'GOLKAR',
+		photo: {
+			src: '/foto-kandidat/Airlangga_Hartarto.jpg',
+			alt: 'Potret Airlangga Hartarto sebagai Menteri Koordinator Bidang Perekonomian Indonesia 2019-Sekarang',
+			width: 400,
+			height: 533,
+		},
+		confirmedRunning: false,
+	},
+
+	KAESANG: {
+		candidateId: 'KAESANG',
+		name: 'Kaesang Pangarep',
+		shortName: 'Kaesang',
+		partyId: 'PSI',
+		photo: {
+			src: '/foto-kandidat/Kaesang_Pangarep.jpg',
+			alt: 'Potret Kaesang Pangarep',
+			width: 400,
+			height: 533,
+		},
+		confirmedRunning: false,
+	},
 };

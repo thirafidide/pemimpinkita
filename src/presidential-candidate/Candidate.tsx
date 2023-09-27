@@ -33,4 +33,7 @@ export type CandidateId =
 	| 'SUSI'
 	| 'ZULHAS'
 	| 'YUSRIL'
-	| 'JOKOWI';
+	| 'JOKOWI'
+	| 'KHOFIFAH'
+	| 'AIRLANGGA'
+	| 'KAESANG';
