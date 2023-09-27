@@ -198,7 +198,7 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		shortName: 'Yusril',
 		partyId: 'PBB',
 		photo: {
-			src: '/foto-kandidat/Yusril_Ihza_Mahendra.jpg',
+			src: '/foto-kandidat/Yusril_Ihza_Mahendra.png',
 			alt: 'Potret Yusril Ihza Mahendra',
 			width: 401,
 			height: 550,
