@@ -21,14 +21,20 @@ import {
 	getPartyDescriptiveName,
 	politicalPartyData,
 } from '@/political-party/PoliticalParty';
+import { CandidateId } from '@/presidential-candidate/Candidate';
 
 const potentialCandidateData = Object.values(candidateData).filter(
 	({ confirmedRunning }) => !confirmedRunning,
 );
 
-export function CandidatePicker() {
+export interface CandidatePickerProps {
+	value: CandidateId | null;
+	setValue: (candidate: CandidateId | null) => void;
+}
+
+export function CandidatePicker(props: CandidatePickerProps) {
+	const { value, setValue } = props;
 	const [open, setOpen] = React.useState(false);
-	const [value, setValue] = React.useState('');
 
 	const selectedCandidate = potentialCandidateData.find(
 		({ candidateId }) => candidateId === value,
@@ -69,7 +75,7 @@ export function CandidatePicker() {
 						<CommandItem
 							value="NULL"
 							onSelect={() => {
-								setValue('');
+								setValue(null);
 								setOpen(false);
 							}}
 						>
@@ -91,9 +97,8 @@ export function CandidatePicker() {
 								<CommandItem
 									key={candidate.candidateId}
 									value={candidate.candidateId}
-									onSelect={(currentValue) => {
-										// Looks like CMDK lowercased the value for some reason
-										setValue(currentValue.toUpperCase());
+									onSelect={() => {
+										setValue(candidate.candidateId);
 										setOpen(false);
 									}}
 									className="flex justify-between"

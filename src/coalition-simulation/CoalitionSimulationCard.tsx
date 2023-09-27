@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import {
 	PoliticalPartyId,
@@ -12,6 +12,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
 import { CandidatePicker } from './CandidatePicker';
+import { CandidateId } from '../presidential-candidate/Candidate';
+import { candidateData } from '@/presidential-candidate/candidateData';
 
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_SEATS_PERCENT = 20;
 const PRESIDENTIAL_TRESHOLD_WITH_DPR_VOTE_PERCENT = 25;
@@ -44,9 +46,17 @@ export interface CoalitionSimulationCardProps {
 }
 
 export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
+	const [pickedVicePresidentCandidate, setPickedVicePresidentCandidate] =
+		useState<CandidateId | null>(null);
 	const { isOver, setNodeRef, active } = useDroppable({
 		id: props.coalitionId,
 	});
+
+	let vicePresidentialCandidateName = props.vicePresidentialCandidate?.name;
+	if (!vicePresidentialCandidateName && pickedVicePresidentCandidate) {
+		vicePresidentialCandidateName =
+			candidateData[pickedVicePresidentCandidate].name;
+	}
 
 	const partiesData = props.coalitionMember
 		.map((partyId) => politicalPartyData[partyId])
@@ -110,7 +120,10 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 							showParty
 						/>
 					) : (
-						<CandidatePicker />
+						<CandidatePicker
+							value={pickedVicePresidentCandidate}
+							setValue={setPickedVicePresidentCandidate}
+						/>
 					)}
 				</div>
 
@@ -120,7 +133,7 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 					</PresidentialCandidateName>
 
 					<VicePresidentialCandidateName>
-						{props.vicePresidentialCandidate?.name}
+						{vicePresidentialCandidateName}
 					</VicePresidentialCandidateName>
 				</div>
 
