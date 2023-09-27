@@ -25,7 +25,7 @@ import { CandidateId } from '@/presidential-candidate/Candidate';
 
 const potentialCandidateData = Object.values(candidateData)
 	.filter(({ confirmedRunning }) => !confirmedRunning)
-	.toSorted((candidateA, candidateB) => {
+	.sort((candidateA, candidateB) => {
 		const candidateAPartyName =
 			candidateA.partyId && politicalPartyData[candidateA.partyId].name;
 		const candidateBPartyName =
