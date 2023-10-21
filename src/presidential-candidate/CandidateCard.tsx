@@ -7,6 +7,8 @@ import {
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { CandidatePhoto } from './CandidatePhoto';
+import { CandidateId } from './Candidate';
+import { candidateData } from './candidateData';
 
 const percentageFormatter = new Intl.NumberFormat('id-ID', {
 	maximumFractionDigits: 2,
@@ -14,22 +16,8 @@ const percentageFormatter = new Intl.NumberFormat('id-ID', {
 });
 
 export interface CandidateCardProps {
-	presidentialCandidate: {
-		name: string;
-		photo: {
-			src: string;
-			alt: string;
-		};
-		partyId?: PoliticalPartyId;
-	};
-	vicePresidentialCandidate?: {
-		name: string;
-		photo: {
-			src: string;
-			alt: string;
-		};
-		partyId?: PoliticalPartyId;
-	};
+	presidentialCandidate: CandidateId;
+	vicePresidentialCandidate?: CandidateId;
 	coalition: {
 		name: string;
 		member: PoliticalPartyId[];
@@ -48,18 +36,23 @@ export function CandidateCard(props: CandidateCardProps) {
 		totalPreviousDPRSeats += previousDPRSeats || 0;
 	}
 
+	const presidentialCandidate = candidateData[props.presidentialCandidate];
+	const vicePresidentialCandidate =
+		props.vicePresidentialCandidate &&
+		candidateData[props.vicePresidentialCandidate];
+
 	return (
 		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
 			<div className="flex gap-2">
 				<CandidatePhoto
-					{...props.presidentialCandidate.photo}
-					partyId={props.presidentialCandidate.partyId}
+					{...presidentialCandidate.photo}
+					partyId={presidentialCandidate.partyId}
 					showParty
 				/>
-				{props.vicePresidentialCandidate && (
+				{vicePresidentialCandidate && (
 					<CandidatePhoto
-						{...props.vicePresidentialCandidate.photo}
-						partyId={props.vicePresidentialCandidate.partyId}
+						{...vicePresidentialCandidate.photo}
+						partyId={vicePresidentialCandidate.partyId}
 						showParty
 					/>
 				)}
@@ -67,11 +60,11 @@ export function CandidateCard(props: CandidateCardProps) {
 
 			<div>
 				<PresidentialCandidateName>
-					{props.presidentialCandidate.name}
+					{presidentialCandidate.name}
 				</PresidentialCandidateName>
 
 				<VicePresidentialCandidateName>
-					{props.vicePresidentialCandidate?.name}
+					{vicePresidentialCandidate?.name}
 				</VicePresidentialCandidateName>
 			</div>
 
