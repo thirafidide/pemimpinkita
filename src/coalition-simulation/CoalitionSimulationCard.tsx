@@ -25,22 +25,8 @@ const percentageFormatter = new Intl.NumberFormat('id-ID', {
 });
 
 export interface CoalitionSimulationCardProps {
-	presidentialCandidate: {
-		name: string;
-		partyId?: PoliticalPartyId;
-		photo: {
-			src: string;
-			alt: string;
-		};
-	};
-	vicePresidentialCandidate?: {
-		name: string;
-		partyId?: PoliticalPartyId;
-		photo: {
-			src: string;
-			alt: string;
-		};
-	};
+	presidentialCandidate: CandidateId;
+	vicePresidentialCandidate?: CandidateId;
 	coalitionId: string;
 	coalitionMember: PoliticalPartyId[];
 }
@@ -52,11 +38,11 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 		id: props.coalitionId,
 	});
 
-	let vicePresidentialCandidateName = props.vicePresidentialCandidate?.name;
-	if (!vicePresidentialCandidateName && pickedVicePresidentCandidate) {
-		vicePresidentialCandidateName =
-			candidateData[pickedVicePresidentCandidate].name;
-	}
+	let vicePresidentialCandidate =
+		props.vicePresidentialCandidate ?? pickedVicePresidentCandidate;
+	let presidentialCandidateData = candidateData[props.presidentialCandidate];
+	let vicePresidentialCandidateData =
+		vicePresidentialCandidate && candidateData[vicePresidentialCandidate];
 
 	const partiesData = props.coalitionMember
 		.map((partyId) => politicalPartyData[partyId])
@@ -109,14 +95,14 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 			>
 				<div className="flex gap-2">
 					<CandidatePhoto
-						{...props.presidentialCandidate.photo}
-						partyId={props.presidentialCandidate.partyId}
+						{...presidentialCandidateData.photo}
+						partyId={presidentialCandidateData.partyId}
 						showParty
 					/>
-					{props.vicePresidentialCandidate ? (
+					{vicePresidentialCandidateData ? (
 						<CandidatePhoto
-							{...props.vicePresidentialCandidate.photo}
-							partyId={props.vicePresidentialCandidate.partyId}
+							{...vicePresidentialCandidateData.photo}
+							partyId={vicePresidentialCandidateData.partyId}
 							showParty
 						/>
 					) : (
@@ -129,11 +115,11 @@ export function CoalitionSimulationCard(props: CoalitionSimulationCardProps) {
 
 				<div>
 					<PresidentialCandidateName>
-						{props.presidentialCandidate.name}
+						{presidentialCandidateData.name}
 					</PresidentialCandidateName>
 
 					<VicePresidentialCandidateName>
-						{vicePresidentialCandidateName}
+						{vicePresidentialCandidateData?.name}
 					</VicePresidentialCandidateName>
 				</div>
 
