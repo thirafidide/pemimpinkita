@@ -14,6 +14,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/Accordion';
+import { PoliticalPartyFlag } from '@/political-party/PoliticalPartyFlag';
 
 export default function Home() {
 	return (
@@ -46,43 +47,45 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row gap-3 justify-stretch">
-				<CandidateCard
-					presidentialCandidate="PRABOWO"
-					coalition={{
-						name: 'Koalisi Indonesia Maju',
-						member: [
-							'GERINDRA',
-							'GOLKAR',
-							'DEMOKRAT',
-							'PAN',
-							'PBB',
-							'GARUDA',
-							'GELORA',
-						],
-					}}
-				/>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
+					<CandidateCard
+						presidentialCandidate="PRABOWO"
+						coalition={{
+							name: 'Koalisi Indonesia Maju',
+							member: [
+								'GERINDRA',
+								'GOLKAR',
+								'DEMOKRAT',
+								'PAN',
+								'PBB',
+								'GARUDA',
+								'GELORA',
+							],
+						}}
+					/>
 
-				<CandidateCard
-					presidentialCandidate="ANIES"
-					vicePresidentialCandidate="IMIN"
-					coalition={{
-						name: 'Koalisi Perubahan untuk Persatuan',
-						member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
-					}}
-				/>
+					<CandidateCard
+						presidentialCandidate="ANIES"
+						vicePresidentialCandidate="IMIN"
+						coalition={{
+							name: 'Koalisi Perubahan untuk Persatuan',
+							member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
+						}}
+					/>
 
-				<CandidateCard
-					presidentialCandidate="GANJAR"
-					vicePresidentialCandidate="MAHFUDMD"
-					coalition={{
-						name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
-						member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
-					}}
-				/>
+					<CandidateCard
+						presidentialCandidate="GANJAR"
+						vicePresidentialCandidate="MAHFUDMD"
+						coalition={{
+							name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
+							member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
+						}}
+					/>
+				</div>
+
+				<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
 			</div>
-
-			<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
 		</main>
 	);
 }
@@ -108,11 +111,13 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 		<Accordion type="single" collapsible className="w-full">
 			<AccordionItem value="no-coalition">
 				<AccordionTrigger>
-					<div className="flex gap-2 items-center">
+					<div className="flex gap-8 items-center justify-between w-full">
 						<h2>Partai Nasional yang belum mendeklarasikan dukungan</h2>
-						{props.parties.map((partyId) => (
-							<PoliticalPartyChip key={partyId} party={partyId} />
-						))}
+						<div className="flex gap-2">
+							{props.parties.map((partyId) => (
+								<PoliticalPartyFlag key={partyId} party={partyId} />
+							))}
+						</div>
 					</div>
 				</AccordionTrigger>
 				<AccordionContent>
