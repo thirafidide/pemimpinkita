@@ -8,6 +8,13 @@ import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from '@/components/ui/Accordion';
+import { PoliticalPartyFlag } from '@/political-party/PoliticalPartyFlag';
 
 export default function Home() {
 	return (
@@ -40,43 +47,45 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row gap-3 justify-stretch">
-				<CandidateCard
-					presidentialCandidate="PRABOWO"
-					coalition={{
-						name: 'Koalisi Indonesia Maju',
-						member: [
-							'GERINDRA',
-							'GOLKAR',
-							'DEMOKRAT',
-							'PAN',
-							'PBB',
-							'GARUDA',
-							'GELORA',
-						],
-					}}
-				/>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
+					<CandidateCard
+						presidentialCandidate="PRABOWO"
+						coalition={{
+							name: 'Koalisi Indonesia Maju',
+							member: [
+								'GERINDRA',
+								'GOLKAR',
+								'DEMOKRAT',
+								'PAN',
+								'PBB',
+								'GARUDA',
+								'GELORA',
+							],
+						}}
+					/>
 
-				<CandidateCard
-					presidentialCandidate="ANIES"
-					vicePresidentialCandidate="IMIN"
-					coalition={{
-						name: 'Koalisi Perubahan untuk Persatuan',
-						member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
-					}}
-				/>
+					<CandidateCard
+						presidentialCandidate="ANIES"
+						vicePresidentialCandidate="IMIN"
+						coalition={{
+							name: 'Koalisi Perubahan untuk Persatuan',
+							member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
+						}}
+					/>
 
-				<CandidateCard
-					presidentialCandidate="GANJAR"
-					vicePresidentialCandidate="MAHFUDMD"
-					coalition={{
-						name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
-						member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
-					}}
-				/>
+					<CandidateCard
+						presidentialCandidate="GANJAR"
+						vicePresidentialCandidate="MAHFUDMD"
+						coalition={{
+							name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
+							member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
+						}}
+					/>
+				</div>
+
+				<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
 			</div>
-
-			<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
 		</main>
 	);
 }
@@ -99,34 +108,48 @@ function PartiesNotInCoalitionSection(props: { parties: PoliticalPartyId[] }) {
 	}
 
 	return (
-		<div className="flex flex-col gap-4">
-			<p className="scroll-m-20 font-semibold tracking-tight">
-				Partai Nasional yang belum mendeklarasikan dukungan
-			</p>
+		<Accordion type="single" collapsible className="w-full">
+			<AccordionItem value="no-coalition">
+				<AccordionTrigger>
+					<div className="flex gap-8 items-center justify-between w-full">
+						<h2>Partai Nasional yang belum mendeklarasikan dukungan</h2>
+						<div className="flex gap-2">
+							{props.parties.map((partyId) => (
+								<PoliticalPartyFlag key={partyId} party={partyId} />
+							))}
+						</div>
+					</div>
+				</AccordionTrigger>
+				<AccordionContent>
+					<div className="flex flex-col gap-4">
+						<p className="flex flex-1 text-xs flex-col gap-1">
+							<span className="text-3xl font-extralight">
+								{percentageFormatter.format(totalPreviousPollStanding / 100)}
+							</span>
+							<span className="flex items-center gap-1">
+								Total perolehan suara partai pada pemilu 2019
+							</span>
+						</p>
 
-			<p className="flex flex-1 text-xs flex-col gap-1">
-				<span className="text-3xl font-extralight">
-					{percentageFormatter.format(totalPreviousPollStanding / 100)}
-				</span>
-				<span className="flex items-center gap-1">
-					Total perolehan suara partai pada pemilu 2019
-				</span>
-			</p>
+						<p className="text-sm">
+							<span className="font-bold text-2xl">
+								{totalPreviousDPRSeats}
+							</span>{' '}
+							/ 575 Kursi DPR RI (2019 - 2024)
+						</p>
 
-			<p className="text-sm">
-				<span className="font-bold text-2xl">{totalPreviousDPRSeats}</span> /
-				575 Kursi DPR RI (2019 - 2024)
-			</p>
-
-			<div className="flex gap-2 flex-wrap">
-				{props.parties.map((partyId) => (
-					<PoliticalPartyPopover
-						key={partyId}
-						id={partyId}
-						trigger={<PoliticalPartyChip party={partyId} />}
-					/>
-				))}
-			</div>
-		</div>
+						<div className="flex gap-2 flex-wrap">
+							{props.parties.map((partyId) => (
+								<PoliticalPartyPopover
+									key={partyId}
+									id={partyId}
+									trigger={<PoliticalPartyChip party={partyId} />}
+								/>
+							))}
+						</div>
+					</div>
+				</AccordionContent>
+			</AccordionItem>
+		</Accordion>
 	);
 }
