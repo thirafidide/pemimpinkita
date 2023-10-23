@@ -51,6 +51,7 @@ export default function Home() {
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					<CandidateCard
 						presidentialCandidate="PRABOWO"
+						vicePresidentialCandidate="GIBRAN"
 						coalition={{
 							name: 'Koalisi Indonesia Maju',
 							member: [

@@ -126,6 +126,7 @@ export default function CoalitionSimulation() {
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					<CoalitionSimulationCard
 						presidentialCandidate="PRABOWO"
+						vicePresidentialCandidate="GIBRAN"
 						coalitionId="prabowo-coalition"
 						coalitionMember={prabowoCoalitionMember}
 					/>

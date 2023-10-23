@@ -128,7 +128,6 @@ export const candidateData: Record<CandidateId, Candidate> = {
 		candidateId: 'GIBRAN',
 		name: 'Gibran Rakabuming Raka',
 		shortName: 'Gibran',
-		partyId: 'PDIP',
 		photo: {
 			src: '/foto-kandidat/Gibran_Rakabuming_Raka.jpg',
 			alt: 'Potret Gibran Rakabuming sebagai Wali Kota Surakarta 2021-Sekarang',
