@@ -62,6 +62,7 @@ export default function Home() {
 								'PBB',
 								'GARUDA',
 								'GELORA',
+								'PSI',
 							],
 						}}
 					/>
@@ -85,7 +86,7 @@ export default function Home() {
 					/>
 				</div>
 
-				<PartiesNotInCoalitionSection parties={['PSI', 'PKN', 'BURUH']} />
+				<PartiesNotInCoalitionSection parties={['PKN', 'BURUH']} />
 			</div>
 		</main>
 	);
