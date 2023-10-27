@@ -1,4 +1,5 @@
-import { Button } from '@/components/ui/Button';
+'use client';
+
 import {
 	PoliticalPartyId,
 	politicalPartyData,
@@ -6,8 +7,6 @@ import {
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { CandidateCard } from '@/presidential-candidate/CandidateCard';
-import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
 import {
 	Accordion,
 	AccordionContent,
@@ -15,8 +14,14 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/Accordion';
 import { PoliticalPartyFlag } from '@/political-party/PoliticalPartyFlag';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { useState } from 'react';
+import { CampaignPromisesIntro } from '@/campaign-promises/CampaignPromisesIntro';
+import { PreviousPollIntro } from '@/previous-poll/PreviousPollIntro';
 
 export default function Home() {
+	const [selectedTab, onChangeTabs] = useState('campaign-promises');
+
 	return (
 		<main className="flex flex-col gap-12 container p-0 mx-auto">
 			<div className="flex flex-col gap-6">
@@ -24,27 +29,22 @@ export default function Home() {
 					Pemilu Presiden 2024
 				</h1>
 
-				<div className="flex flex-col gap-1 max-w-2xl">
-					<p>
-						Kondisi sementara kandidat capres-cawapres dan koalisi partai
-						pendukungnya pada Pemilihan umum (Pemilu) Presiden Indonesia 2024,
-						berdasarkan partai pendukung dan perolehan suara pada Pemilu
-						sebelumnya (2019)
-					</p>
+				<Tabs
+					value={selectedTab}
+					onValueChange={onChangeTabs}
+					className="w-[400px]"
+				>
+					<TabsList>
+						<TabsTrigger value="campaign-promises">Janji Kampanye</TabsTrigger>
+						<TabsTrigger value="2019-data">Perolehan Suara 2019</TabsTrigger>
+					</TabsList>
+				</Tabs>
 
-					<p className="text-sm">
-						Sumber Data:{' '}
-						<Button variant="link" className="p-0" asChild>
-							<Link
-								href="https://pemilu2019.kpu.go.id/#/dprri/hitung-suara/"
-								target="_blank"
-							>
-								KPU - Info Publik Pemilu 2019
-								<ExternalLink size={14} className="ml-1" />
-							</Link>
-						</Button>
-					</p>
-				</div>
+				{selectedTab === 'campaign-promises' ? (
+					<CampaignPromisesIntro />
+				) : (
+					<PreviousPollIntro />
+				)}
 			</div>
 
 			<div className="flex flex-col gap-4">
