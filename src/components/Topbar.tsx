@@ -13,6 +13,7 @@ import {
 } from './ui/Sheet';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Logo } from '@/Logo';
 
 const navigations: Array<{ linkText: string; href: string }> = [
 	{ linkText: 'Pilpres 2024', href: '/' },
@@ -25,10 +26,12 @@ export function Topbar() {
 		<header className="flex container p-0">
 			<Button
 				variant="link"
-				className="rounded-none bg-foreground px-4 py-2 -ml-4 text-background scroll-m-20 text-xl font-extrabold tracking-tight"
+				className="p-0 dark:text-foreground scroll-m-20"
 				asChild
 			>
-				<Link href="/">PemimpinKita.org</Link>
+				<Link href="/">
+					<Logo width="200" height="44" />
+				</Link>
 			</Button>
 
 			<div className="flex-1" />

@@ -29,11 +29,7 @@ export default function Home() {
 					Pemilu Presiden 2024
 				</h1>
 
-				<Tabs
-					value={selectedTab}
-					onValueChange={onChangeTabs}
-					className="w-[400px]"
-				>
+				<Tabs value={selectedTab} onValueChange={onChangeTabs}>
 					<TabsList>
 						<TabsTrigger value="campaign-promises">Janji Kampanye</TabsTrigger>
 						<TabsTrigger value="2019-data">Perolehan Suara 2019</TabsTrigger>

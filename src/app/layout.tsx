@@ -24,11 +24,11 @@ export default function RootLayout({
 			<body
 				className={cn(
 					inter.className,
-					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24',
+					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24 lg:pt-8',
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					<div className="flex flex-col gap-8">
+					<div className="flex flex-col gap-32">
 						<Topbar />
 
 						{children}
