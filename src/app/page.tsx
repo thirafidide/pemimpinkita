@@ -94,7 +94,17 @@ export default function Home() {
 					)}
 				</div>
 
-				<PartiesNotInCoalitionSection parties={['PKN', 'BURUH']} />
+				{selectedTab === 'campaign-promises' && (
+					<section className="flex flex-col items-center justify-center rounded-lg border bg-secondary text-card-foreground shadow-sm px-4 py-24">
+						<p className="text-center font-semibold text-xs">
+							🚧 WIP Perbandingan Misi, Program Kerja, Agenda, dll 🚧
+						</p>
+					</section>
+				)}
+
+				{selectedTab === '2019-data' && (
+					<PartiesNotInCoalitionSection parties={['PKN', 'BURUH']} />
+				)}
 			</div>
 		</main>
 	);
