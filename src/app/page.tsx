@@ -18,6 +18,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { useState } from 'react';
 import { CampaignPromisesIntro } from '@/campaign-promises/CampaignPromisesIntro';
 import { PreviousPollIntro } from '@/previous-poll/PreviousPollIntro';
+import { CandidateCampaignCard } from '@/campaign-promises/CandidateCampaignCard';
 
 export default function Home() {
 	const [selectedTab, onChangeTabs] = useState('campaign-promises');
@@ -45,41 +46,52 @@ export default function Home() {
 
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
-					<CandidateCard
-						presidentialCandidate="PRABOWO"
-						vicePresidentialCandidate="GIBRAN"
-						coalition={{
-							name: 'Koalisi Indonesia Maju',
-							member: [
-								'GERINDRA',
-								'GOLKAR',
-								'DEMOKRAT',
-								'PAN',
-								'PBB',
-								'GARUDA',
-								'GELORA',
-								'PSI',
-							],
-						}}
-					/>
+					{selectedTab === 'campaign-promises' && (
+						<>
+							<CandidateCampaignCard candidatesId="PRABAN" />
+							<CandidateCampaignCard candidatesId="AMIN" />
+							<CandidateCampaignCard candidatesId="GAMA" />
+						</>
+					)}
+					{selectedTab === '2019-data' && (
+						<>
+							<CandidateCard
+								presidentialCandidate="PRABOWO"
+								vicePresidentialCandidate="GIBRAN"
+								coalition={{
+									name: 'Koalisi Indonesia Maju',
+									member: [
+										'GERINDRA',
+										'GOLKAR',
+										'DEMOKRAT',
+										'PAN',
+										'PBB',
+										'GARUDA',
+										'GELORA',
+										'PSI',
+									],
+								}}
+							/>
 
-					<CandidateCard
-						presidentialCandidate="ANIES"
-						vicePresidentialCandidate="IMIN"
-						coalition={{
-							name: 'Koalisi Perubahan untuk Persatuan',
-							member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
-						}}
-					/>
+							<CandidateCard
+								presidentialCandidate="ANIES"
+								vicePresidentialCandidate="IMIN"
+								coalition={{
+									name: 'Koalisi Perubahan untuk Persatuan',
+									member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
+								}}
+							/>
 
-					<CandidateCard
-						presidentialCandidate="GANJAR"
-						vicePresidentialCandidate="MAHFUDMD"
-						coalition={{
-							name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
-							member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
-						}}
-					/>
+							<CandidateCard
+								presidentialCandidate="GANJAR"
+								vicePresidentialCandidate="MAHFUDMD"
+								coalition={{
+									name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
+									member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
+								}}
+							/>
+						</>
+					)}
 				</div>
 
 				<PartiesNotInCoalitionSection parties={['PKN', 'BURUH']} />
