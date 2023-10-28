@@ -60,16 +60,18 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 				</div>
 			</div>
 
-			<div className="flex gap-2 flex-wrap">
-				{pairData.coalition.member.map((partyId) => (
-					<PoliticalPartyPopover
-						key={partyId}
-						id={partyId}
-						trigger={
-							<PoliticalPartyChip className="p-2" party={partyId} hideName />
-						}
-					/>
-				))}
+			<div className="flex flex-col flex-1 justify-end">
+				<div className="flex gap-2 flex-wrap">
+					{pairData.coalition.member.map((partyId) => (
+						<PoliticalPartyPopover
+							key={partyId}
+							id={partyId}
+							trigger={
+								<PoliticalPartyChip className="p-2" party={partyId} hideName />
+							}
+						/>
+					))}
+				</div>
 			</div>
 		</article>
 	);
