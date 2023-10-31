@@ -9,6 +9,11 @@ export const candidatePairData: Record<CandidatePairId, CandidatePair> = {
 			name: 'Koalisi Perubahan untuk Persatuan',
 			member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
 		},
+		photo: {
+			src: '/foto-paslon/amin.png',
+			width: 404,
+			height: 300,
+		},
 		vision: ['Indonesia Adil Makmur untuk Semua'],
 	},
 	GAMA: {
@@ -18,6 +23,11 @@ export const candidatePairData: Record<CandidatePairId, CandidatePair> = {
 		coalition: {
 			name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
 			member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
+		},
+		photo: {
+			src: '/foto-paslon/gama.png',
+			width: 407,
+			height: 300,
 		},
 		vision: [
 			'Menuju Indonesia Unggul',
@@ -40,6 +50,11 @@ export const candidatePairData: Record<CandidatePairId, CandidatePair> = {
 				'PSI',
 				'GARUDA',
 			],
+		},
+		photo: {
+			src: '/foto-paslon/praban.png',
+			width: 483,
+			height: 300,
 		},
 		vision: ['Bersama Indonesia Maju Menuju Indonesia Emas 2045'],
 	},

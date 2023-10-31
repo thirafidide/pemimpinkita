@@ -1,9 +1,9 @@
 import { PoliticalPartyPopover } from '@/political-party/PoliticalPartyPopover';
 import { PoliticalPartyChip } from '@/political-party/PoliticalPartyChip';
 import { candidateData } from '@/presidential-candidate/candidateData';
-import { CandidatePhoto } from '@/presidential-candidate/CandidatePhoto';
 import { CandidatePairId } from '@/presidential-candidate/CandidatePair';
 import { candidatePairData } from '@/presidential-candidate/candidatePairData';
+import Image from 'next/image';
 
 export interface CandidateCampaignCardProps {
 	candidatesId: CandidatePairId;
@@ -20,31 +20,25 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 	const subVision = pairData.vision[1];
 
 	return (
-		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
-			<div className="flex flex-col gap-4">
-				<div className="flex gap-2">
-					<CandidatePhoto
-						{...presidentialCandidate.photo}
-						partyId={presidentialCandidate.partyId}
-						showParty
-					/>
-					{vicePresidentialCandidate && (
-						<CandidatePhoto
-							{...vicePresidentialCandidate.photo}
-							partyId={vicePresidentialCandidate.partyId}
-							showParty
-						/>
-					)}
-				</div>
+		<article className="flex flex-col gap-7 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
+			<div className="flex flex-col gap-3">
+				<Image
+					className="w-full h-40 object-cover"
+					priority
+					width={300}
+					height={150}
+					src={pairData.photo.src}
+					alt={`Foto pasangan capres-cawapres ${presidentialCandidate.shortName} & ${vicePresidentialCandidate.shortName}`}
+				/>
 
-				<h2 className="text-xl font-bold">
+				<h2 className="text-xl font-bold px-4">
 					{presidentialCandidate.shortName}{' '}
 					<span className="text-lg font-semibold">&</span>{' '}
 					{vicePresidentialCandidate.shortName}
 				</h2>
 			</div>
 
-			<div className="flex flex-col gap-1">
+			<div className="flex flex-col gap-1 px-4">
 				<p className="text-xs">Visi</p>
 
 				<div>
@@ -60,7 +54,7 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 				</div>
 			</div>
 
-			<div className="flex flex-col flex-1 justify-end">
+			<div className="flex flex-col flex-1 justify-end px-4 pb-4">
 				<div className="flex gap-2 flex-wrap">
 					{pairData.coalition.member.map((partyId) => (
 						<PoliticalPartyPopover

@@ -11,5 +11,11 @@ export interface CandidatePair {
 		name: string;
 		member: PoliticalPartyId[];
 	};
+	photo: {
+		src: string;
+		width: number;
+		height: number;
+		alt?: string;
+	};
 	vision: string[];
 }
