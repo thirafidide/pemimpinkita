@@ -84,14 +84,21 @@ function MobileNavigationSheet() {
 					</MobileLink>
 				</SheetHeader>
 
-				<nav className="flex flex-col gap-2 pt-6">
-					{navigations.map(({ linkText, href }) => (
-						<Button key={href} className="justify-start" variant="link" asChild>
-							<MobileLink onOpenChange={setOpen} href={href}>
-								{linkText}
-							</MobileLink>
-						</Button>
-					))}
+				<nav className="flex flex-col gap-8 pt-6">
+					<div className="flex flex-col gap-2">
+						{navigations.map(({ linkText, href }) => (
+							<Button
+								key={href}
+								className="justify-start"
+								variant="link"
+								asChild
+							>
+								<MobileLink onOpenChange={setOpen} href={href}>
+									{linkText}
+								</MobileLink>
+							</Button>
+						))}
+					</div>
 
 					<div className="flex gap-2">
 						<Button variant="link" size="icon" asChild>
