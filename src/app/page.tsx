@@ -8,22 +8,8 @@ import { CampaignPromisesIntro } from '@/presidential-candidate/campaign-promise
 import { PreviousPollIntro } from '@/presidential-candidate/previous-poll/PreviousPollIntro';
 import { CandidateCampaignCard } from '@/presidential-candidate/campaign-promises/CandidateCampaignCard';
 import { PartiesNotInCoalitionSection } from '@/political-party/PartiesNotInCoalitionSection';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/Accordion';
-import {
-	CandidateComparison,
-	CandidateComparisonItem,
-} from '@/components/CandidateComparison';
-import { candidatePairMissionData } from '@/presidential-candidate/candidatePairData';
-import {
-	Collapsible,
-	CollapsibleContent,
-	CollapsibleTrigger,
-} from '@/components/ui/Collapsible';
+import { CandidateComparison } from '@/components/CandidateComparison';
+import { CandidateMissionsComparison } from '@/presidential-candidate/campaign-promises/CandidateMissionsComparison';
 
 export default function Home() {
 	const [selectedTab, onChangeTabs] = useState('campaign-promises');
@@ -69,78 +55,7 @@ export default function Home() {
 
 				{selectedTab === 'campaign-promises' && (
 					<>
-						<Collapsible className="w-full" defaultOpen>
-							<CollapsibleTrigger className="w-full">
-								<h3 className="text-xl font-bold m-3 p-1 border-b hover:underline">
-									Misi
-								</h3>
-							</CollapsibleTrigger>
-
-							<CollapsibleContent className="flex flex-col gap-4">
-								<CandidateComparison className="hidden md:flex md:sticky top-0 z-10">
-									<CandidateComparisonItem className="p-4">
-										Prabowo - Gibran
-									</CandidateComparisonItem>
-									<CandidateComparisonItem className="p-4">
-										Anies - Imin
-									</CandidateComparisonItem>
-									<CandidateComparisonItem className="p-4">
-										Ganjar - Mahfud MD
-									</CandidateComparisonItem>
-								</CandidateComparison>
-
-								<CandidateComparison>
-									<CandidateComparisonItem>
-										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
-											Prabowo - Gibran
-										</div>
-
-										{candidatePairMissionData['PRABAN'].map(
-											({ id, title }, index) => (
-												<div className="relative p-8" key={id}>
-													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
-														{index + 1}
-													</div>
-													{title}
-												</div>
-											),
-										)}
-									</CandidateComparisonItem>
-									<CandidateComparisonItem>
-										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
-											Anies - Imin
-										</div>
-
-										{candidatePairMissionData['AMIN'].map(
-											({ id, title }, index) => (
-												<div className="relative p-8" key={id}>
-													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
-														{index + 1}
-													</div>
-													{title}
-												</div>
-											),
-										)}
-									</CandidateComparisonItem>
-									<CandidateComparisonItem>
-										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
-											Ganjar - Mahfud MD
-										</div>
-
-										{candidatePairMissionData['GAMA'].map(
-											({ id, title }, index) => (
-												<div className="relative p-8" key={id}>
-													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
-														{index + 1}
-													</div>
-													{title}
-												</div>
-											),
-										)}
-									</CandidateComparisonItem>
-								</CandidateComparison>
-							</CollapsibleContent>
-						</Collapsible>
+						<CandidateMissionsComparison />
 
 						<section className="flex flex-col items-center justify-center rounded-lg border bg-secondary text-card-foreground shadow-sm px-4 py-24">
 							<p className="text-center font-semibold text-xs">
