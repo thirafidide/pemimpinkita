@@ -74,9 +74,14 @@ function MobileNavigationSheet() {
 					<span className="sr-only pl-2">Menu navigasi</span>
 				</Button>
 			</SheetTrigger>
+
 			<SheetContent side="left">
 				<SheetHeader>
-					<SheetTitle className="text-left">PemimpinKita.org</SheetTitle>
+					<MobileLink onOpenChange={setOpen} href="/">
+						<SheetTitle className="text-left">
+							<Logo width="165" height="44" />
+						</SheetTitle>
+					</MobileLink>
 				</SheetHeader>
 
 				<nav className="flex flex-col gap-2 pt-6">
