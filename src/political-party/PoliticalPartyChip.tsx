@@ -12,16 +12,16 @@ export interface PoliticalPartyChipProps extends ButtonProps {
 export const PoliticalPartyChip = React.forwardRef<
 	HTMLButtonElement,
 	PoliticalPartyChipProps
->(({ party, ...props }, ref) => {
+>(({ party, hideName, ...props }, ref) => {
 	const data = politicalPartyData[party];
 
 	return (
 		<Button ref={ref} variant="outline" {...props}>
 			<PoliticalPartyFlag
 				party={party}
-				className={cn({ 'pr-2': !props.hideName }, 'not-sr-only')}
+				className={cn({ 'pr-2': !hideName }, 'not-sr-only')}
 			/>
-			<div className={cn({ 'sr-only': props.hideName })}>{data.name}</div>
+			<div className={cn({ 'sr-only': hideName })}>{data.name}</div>
 		</Button>
 	);
 });
