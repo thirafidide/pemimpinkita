@@ -8,6 +8,16 @@ import { CampaignPromisesIntro } from '@/presidential-candidate/campaign-promise
 import { PreviousPollIntro } from '@/presidential-candidate/previous-poll/PreviousPollIntro';
 import { CandidateCampaignCard } from '@/presidential-candidate/campaign-promises/CandidateCampaignCard';
 import { PartiesNotInCoalitionSection } from '@/political-party/PartiesNotInCoalitionSection';
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from '@/components/ui/Accordion';
+import {
+	CandidateComparison,
+	CandidateComparisonColumn,
+} from '@/components/CandidateComparison';
 
 export default function Home() {
 	const [selectedTab, onChangeTabs] = useState('campaign-promises');
@@ -34,7 +44,7 @@ export default function Home() {
 			</div>
 
 			<div className="flex flex-col gap-4">
-				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
+				<CandidateComparison>
 					{selectedTab === 'campaign-promises' && (
 						<>
 							<CandidateCampaignCard candidatePairId="PRABAN" />
@@ -49,14 +59,40 @@ export default function Home() {
 							<CandidateCard candidatePairId="GAMA" />
 						</>
 					)}
-				</div>
+				</CandidateComparison>
 
 				{selectedTab === 'campaign-promises' && (
-					<section className="flex flex-col items-center justify-center rounded-lg border bg-secondary text-card-foreground shadow-sm px-4 py-24">
-						<p className="text-center font-semibold text-xs">
-							🚧 WIP Perbandingan Misi, Program Kerja, Agenda, dll 🚧
-						</p>
-					</section>
+					<>
+						<Accordion
+							type="single"
+							collapsible
+							className="w-full"
+							defaultValue="candidate-missions"
+						>
+							<AccordionItem value="candidate-missions">
+								<AccordionTrigger>Misi</AccordionTrigger>
+								<AccordionContent>
+									<CandidateComparison>
+										<CandidateComparisonColumn className="p-4">
+											Test
+										</CandidateComparisonColumn>
+										<CandidateComparisonColumn className="p-4">
+											Test
+										</CandidateComparisonColumn>
+										<CandidateComparisonColumn className="p-4">
+											Test
+										</CandidateComparisonColumn>
+									</CandidateComparison>
+								</AccordionContent>
+							</AccordionItem>
+						</Accordion>
+
+						<section className="flex flex-col items-center justify-center rounded-lg border bg-secondary text-card-foreground shadow-sm px-4 py-24">
+							<p className="text-center font-semibold text-xs">
+								🚧 WIP Perbandingan Misi, Program Kerja, Agenda, dll 🚧
+							</p>
+						</section>
+					</>
 				)}
 
 				{selectedTab === '2019-data' && (

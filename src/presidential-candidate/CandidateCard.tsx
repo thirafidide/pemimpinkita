@@ -7,6 +7,7 @@ import { CandidatePhoto } from './CandidatePhoto';
 import { candidateData } from './candidateData';
 import { CandidatePairId } from './CandidatePair';
 import { candidatePairData } from './candidatePairData';
+import { CandidateComparisonColumn } from '@/components/CandidateComparison';
 
 const percentageFormatter = new Intl.NumberFormat('id-ID', {
 	maximumFractionDigits: 2,
@@ -37,7 +38,7 @@ export function CandidateCard(props: CandidateCardProps) {
 		candidateData[data.vicePresidentialCandidate];
 
 	return (
-		<article className="flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm p-4">
+		<CandidateComparisonColumn className="p-4">
 			<div className="flex gap-2">
 				<CandidatePhoto
 					{...presidentialCandidate.photo}
@@ -93,7 +94,7 @@ export function CandidateCard(props: CandidateCardProps) {
 					))}
 				</div>
 			</section>
-		</article>
+		</CandidateComparisonColumn>
 	);
 }
 
