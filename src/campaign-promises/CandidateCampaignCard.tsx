@@ -6,11 +6,11 @@ import { candidatePairData } from '@/presidential-candidate/candidatePairData';
 import Image from 'next/image';
 
 export interface CandidateCampaignCardProps {
-	candidatesId: CandidatePairId;
+	candidatePairId: CandidatePairId;
 }
 
 export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
-	const pairData = candidatePairData[props.candidatesId];
+	const pairData = candidatePairData[props.candidatePairId];
 
 	const presidentialCandidate = candidateData[pairData.presidentialCandidate];
 	const vicePresidentialCandidate =
@@ -19,14 +19,18 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 	const mainVision = pairData.vision[0];
 	const subVision = pairData.vision[1];
 
+	const photoHeight = 192;
+	const photoWidth =
+		(photoHeight * pairData.photo.width) / pairData.photo.height;
+
 	return (
 		<article className="flex flex-col gap-7 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
 			<div className="flex flex-col gap-3">
 				<Image
-					className="w-full h-40 object-cover"
+					className="w-full h-48 object-cover"
 					priority
-					width={300}
-					height={150}
+					width={photoWidth}
+					height={photoHeight}
 					src={pairData.photo.src}
 					alt={`Foto pasangan capres-cawapres ${presidentialCandidate.shortName} & ${vicePresidentialCandidate.shortName}`}
 				/>

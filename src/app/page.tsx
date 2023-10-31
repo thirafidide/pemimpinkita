@@ -48,9 +48,9 @@ export default function Home() {
 				<div className="flex flex-col md:flex-row gap-3 justify-stretch">
 					{selectedTab === 'campaign-promises' && (
 						<>
-							<CandidateCampaignCard candidatesId="PRABAN" />
-							<CandidateCampaignCard candidatesId="AMIN" />
-							<CandidateCampaignCard candidatesId="GAMA" />
+							<CandidateCampaignCard candidatePairId="PRABAN" />
+							<CandidateCampaignCard candidatePairId="AMIN" />
+							<CandidateCampaignCard candidatePairId="GAMA" />
 						</>
 					)}
 					{selectedTab === '2019-data' && (
