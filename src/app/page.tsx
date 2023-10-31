@@ -55,41 +55,9 @@ export default function Home() {
 					)}
 					{selectedTab === '2019-data' && (
 						<>
-							<CandidateCard
-								presidentialCandidate="PRABOWO"
-								vicePresidentialCandidate="GIBRAN"
-								coalition={{
-									name: 'Koalisi Indonesia Maju',
-									member: [
-										'GERINDRA',
-										'GOLKAR',
-										'DEMOKRAT',
-										'PAN',
-										'PBB',
-										'GARUDA',
-										'GELORA',
-										'PSI',
-									],
-								}}
-							/>
-
-							<CandidateCard
-								presidentialCandidate="ANIES"
-								vicePresidentialCandidate="IMIN"
-								coalition={{
-									name: 'Koalisi Perubahan untuk Persatuan',
-									member: ['NASDEM', 'PKB', 'PKS', 'UMMAT'],
-								}}
-							/>
-
-							<CandidateCard
-								presidentialCandidate="GANJAR"
-								vicePresidentialCandidate="MAHFUDMD"
-								coalition={{
-									name: 'Kerja Sama Partai Politik Pengusung Ganjar Pranowo',
-									member: ['PDIP', 'PPP', 'HANURA', 'PERINDO'],
-								}}
-							/>
+							<CandidateCard candidatePairId="PRABAN" />
+							<CandidateCard candidatePairId="AMIN" />
+							<CandidateCard candidatePairId="GAMA" />
 						</>
 					)}
 				</div>
