@@ -4,7 +4,7 @@ import { candidateData } from '@/presidential-candidate/candidateData';
 import { CandidatePairId } from '@/presidential-candidate/CandidatePair';
 import { candidatePairData } from '@/presidential-candidate/candidatePairData';
 import Image from 'next/image';
-import { CandidateComparisonColumn } from '@/components/CandidateComparison';
+import { CandidateComparisonItem } from '@/components/CandidateComparison';
 
 export interface CandidateCampaignCardProps {
 	candidatePairId: CandidatePairId;
@@ -25,7 +25,7 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 		(photoHeight * pairData.photo.width) / pairData.photo.height;
 
 	return (
-		<CandidateComparisonColumn className="overflow-hidden">
+		<CandidateComparisonItem className="overflow-hidden">
 			<div className="flex flex-col gap-3">
 				<Image
 					className="w-full h-48 object-cover"
@@ -72,6 +72,6 @@ export function CandidateCampaignCard(props: CandidateCampaignCardProps) {
 					))}
 				</div>
 			</div>
-		</CandidateComparisonColumn>
+		</CandidateComparisonItem>
 	);
 }

@@ -19,3 +19,9 @@ export interface CandidatePair {
 	};
 	vision: string[];
 }
+
+export interface CandidatePairMission {
+	id: number;
+	title: string;
+	description?: string;
+}

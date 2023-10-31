@@ -2,24 +2,28 @@ import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 
 export interface CandidateComparisonProps {
+	className?: string;
 	children: ReactNode;
 }
 export function CandidateComparison(props: CandidateComparisonProps) {
 	return (
-		<div className="flex flex-col md:flex-row gap-3 justify-stretch">
+		<div
+			className={cn(
+				'flex flex-col md:flex-row gap-3 justify-stretch',
+				props.className,
+			)}
+		>
 			{props.children}
 		</div>
 	);
 }
 
-export interface CandidateComparisonColumnProps {
+export interface CandidateComparisonItemProps {
 	className?: string;
 	children: ReactNode;
 }
 /** TODO: Decouple this from card styling */
-export function CandidateComparisonColumn(
-	props: CandidateComparisonColumnProps,
-) {
+export function CandidateComparisonItem(props: CandidateComparisonItemProps) {
 	return (
 		<article
 			className={cn(

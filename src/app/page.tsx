@@ -16,8 +16,14 @@ import {
 } from '@/components/ui/Accordion';
 import {
 	CandidateComparison,
-	CandidateComparisonColumn,
+	CandidateComparisonItem,
 } from '@/components/CandidateComparison';
+import { candidatePairMissionData } from '@/presidential-candidate/candidatePairData';
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from '@/components/ui/Collapsible';
 
 export default function Home() {
 	const [selectedTab, onChangeTabs] = useState('campaign-promises');
@@ -63,33 +69,82 @@ export default function Home() {
 
 				{selectedTab === 'campaign-promises' && (
 					<>
-						<Accordion
-							type="single"
-							collapsible
-							className="w-full"
-							defaultValue="candidate-missions"
-						>
-							<AccordionItem value="candidate-missions">
-								<AccordionTrigger>Misi</AccordionTrigger>
-								<AccordionContent>
-									<CandidateComparison>
-										<CandidateComparisonColumn className="p-4">
-											Test
-										</CandidateComparisonColumn>
-										<CandidateComparisonColumn className="p-4">
-											Test
-										</CandidateComparisonColumn>
-										<CandidateComparisonColumn className="p-4">
-											Test
-										</CandidateComparisonColumn>
-									</CandidateComparison>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
+						<Collapsible className="w-full" defaultOpen>
+							<CollapsibleTrigger className="w-full">
+								<h3 className="text-xl font-bold m-3 p-1 border-b hover:underline">
+									Misi
+								</h3>
+							</CollapsibleTrigger>
+
+							<CollapsibleContent className="flex flex-col gap-4">
+								<CandidateComparison className="hidden md:flex md:sticky top-0 z-10">
+									<CandidateComparisonItem className="p-4">
+										Prabowo - Gibran
+									</CandidateComparisonItem>
+									<CandidateComparisonItem className="p-4">
+										Anies - Imin
+									</CandidateComparisonItem>
+									<CandidateComparisonItem className="p-4">
+										Ganjar - Mahfud MD
+									</CandidateComparisonItem>
+								</CandidateComparison>
+
+								<CandidateComparison>
+									<CandidateComparisonItem>
+										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
+											Prabowo - Gibran
+										</div>
+
+										{candidatePairMissionData['PRABAN'].map(
+											({ id, title }, index) => (
+												<div className="relative p-8" key={id}>
+													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
+														{index + 1}
+													</div>
+													{title}
+												</div>
+											),
+										)}
+									</CandidateComparisonItem>
+									<CandidateComparisonItem>
+										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
+											Anies - Imin
+										</div>
+
+										{candidatePairMissionData['AMIN'].map(
+											({ id, title }, index) => (
+												<div className="relative p-8" key={id}>
+													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
+														{index + 1}
+													</div>
+													{title}
+												</div>
+											),
+										)}
+									</CandidateComparisonItem>
+									<CandidateComparisonItem>
+										<div className="p-8 mt-1 sticky flex top-0 bg-white md:hidden z-10 shadow-sm">
+											Ganjar - Mahfud MD
+										</div>
+
+										{candidatePairMissionData['GAMA'].map(
+											({ id, title }, index) => (
+												<div className="relative p-8" key={id}>
+													<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
+														{index + 1}
+													</div>
+													{title}
+												</div>
+											),
+										)}
+									</CandidateComparisonItem>
+								</CandidateComparison>
+							</CollapsibleContent>
+						</Collapsible>
 
 						<section className="flex flex-col items-center justify-center rounded-lg border bg-secondary text-card-foreground shadow-sm px-4 py-24">
 							<p className="text-center font-semibold text-xs">
-								🚧 WIP Perbandingan Misi, Program Kerja, Agenda, dll 🚧
+								🚧 WIP Perbandingan Program Kerja, Agenda, dll 🚧
 							</p>
 						</section>
 					</>
