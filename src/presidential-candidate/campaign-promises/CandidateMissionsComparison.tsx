@@ -1,4 +1,7 @@
-import { CandidateComparison } from '@/components/CandidateComparison';
+import {
+	CandidateComparison,
+	CandidateComparisonCard,
+} from '@/components/CandidateComparison';
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -36,16 +39,20 @@ function CandidateMissions(props: { candidatePairId: CandidatePairId }) {
 	const { candidatePairId } = props;
 	return (
 		<CandidateComparisonItem>
-			<CandidateMissionsStickyHeader candidatePairId={candidatePairId} />
+			<CandidateComparisonCard className="p-0">
+				<CandidateMissionsStickyHeader candidatePairId={candidatePairId} />
 
-			{candidatePairMissionData[candidatePairId].map(({ id, title }, index) => (
-				<div className="relative p-8" key={id}>
-					<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
-						{index + 1}
-					</div>
-					{title}
-				</div>
-			))}
+				{candidatePairMissionData[candidatePairId].map(
+					({ id, title }, index) => (
+						<div className="relative p-8" key={id}>
+							<div className="absolute text-6xl font-bold opacity-10 italic top-2 left-2">
+								{index + 1}
+							</div>
+							{title}
+						</div>
+					),
+				)}
+			</CandidateComparisonCard>
 		</CandidateComparisonItem>
 	);
 }

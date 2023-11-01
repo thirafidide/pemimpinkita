@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
+import { Card } from './ui/Card';
 
 export interface CandidateComparisonProps {
 	className?: string;
@@ -22,16 +23,22 @@ export interface CandidateComparisonItemProps {
 	className?: string;
 	children: ReactNode;
 }
-/** TODO: Decouple this from card styling */
 export function CandidateComparisonItem(props: CandidateComparisonItemProps) {
 	return (
-		<article
-			className={cn(
-				'flex flex-col gap-6 flex-1 rounded-lg border bg-card text-card-foreground shadow-sm',
-				props.className,
-			)}
-		>
+		<article className={cn('flex-1', props.className)}>
 			{props.children}
 		</article>
+	);
+}
+
+export interface CandidateComparisonCardProps {
+	className?: string;
+	children: ReactNode;
+}
+export function CandidateComparisonCard(props: CandidateComparisonCardProps) {
+	return (
+		<Card className={cn('h-full flex flex-col gap-6 p-4', props.className)}>
+			{props.children}
+		</Card>
 	);
 }
