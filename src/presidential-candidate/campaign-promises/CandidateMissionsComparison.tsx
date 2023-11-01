@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import {
 	CandidateComparison,
 	CandidateComparisonCard,
@@ -14,14 +17,25 @@ import {
 } from '../candidatePairData';
 import { CandidatePairId } from '../CandidatePair';
 import { candidateData } from '../candidateData';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function CandidateMissionsComparison() {
+	const [isOpen, setOpen] = useState(true);
+
 	return (
-		<Collapsible className="w-full" defaultOpen>
+		<Collapsible
+			className="w-full"
+			open={isOpen}
+			onOpenChange={(openState) => setOpen(openState)}
+		>
 			<CollapsibleTrigger className="w-full">
-				<h3 className="text-xl font-bold m-3 p-1 border-b hover:underline">
-					Misi
-				</h3>
+				<div className="text-xl font-bold m-3 p-2 border-b hover:underline flex items-center gap-2 justify-center">
+					<ChevronDown
+						className={cn({ 'rotate-180': isOpen }, 'transition-transform')}
+					/>
+					<h3>Misi</h3>
+				</div>
 			</CollapsibleTrigger>
 
 			<CollapsibleContent className="flex flex-col gap-4">
