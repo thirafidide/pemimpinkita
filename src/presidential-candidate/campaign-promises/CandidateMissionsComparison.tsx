@@ -82,7 +82,7 @@ function CandidateMissionsStickyHeader(props: {
 		candidateData[data.vicePresidentialCandidate];
 
 	return (
-		<div className="px-8 pt-3 mt-1 pb-4 sticky flex flex-col top-0 bg-white z-10 shadow-sm">
+		<div className="px-8 pt-3 mt-1 pb-4 sticky flex flex-col top-0 bg-background z-10 shadow-sm">
 			<p className="text-xs">Misi</p>
 			<h4 className="font-semibold">
 				{presidentialCandidateData.shortName} -{' '}
