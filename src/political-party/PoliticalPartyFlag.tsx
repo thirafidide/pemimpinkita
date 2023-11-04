@@ -5,8 +5,12 @@ import {
 	getPartyDescriptiveName,
 	politicalPartyData,
 } from './PoliticalParty';
+import { cn } from '@/lib/utils';
 
-export function PoliticalPartyFlag(props: { party: PoliticalPartyId }) {
+export function PoliticalPartyFlag(props: {
+	party: PoliticalPartyId;
+	className?: string;
+}) {
 	const data = politicalPartyData[props.party];
 
 	const logoHeight = 24;
@@ -14,7 +18,7 @@ export function PoliticalPartyFlag(props: { party: PoliticalPartyId }) {
 
 	return (
 		<Image
-			className="h-6 w-auto pr-2 object-scale-down"
+			className={cn('h-6 w-auto object-scale-down', props.className)}
 			src={data.logo.src}
 			alt={`Logo ${getPartyDescriptiveName(data)}`}
 			width={logoWidth}

@@ -1,12 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { cn } from '../lib/utils';
 import { Topbar } from '@/components/Topbar';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'PemimpinKita - Pemilu Presiden 2024',
@@ -20,15 +20,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="id">
+		<html lang="id" suppressHydrationWarning>
 			<body
 				className={cn(
 					inter.className,
-					'min-h-screen bg-[#FCFCFC] dark:bg-background p-8 lg:p-24',
+					'min-h-screen bg-[#FCFCFC] dark:bg-background p-6 lg:p-24 lg:pt-8',
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					<div className="flex flex-col gap-8">
+					<div className="flex flex-col gap-8 md:gap-32">
 						<Topbar />
 
 						{children}
